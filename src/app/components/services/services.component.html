@@ -1,0 +1,13 @@
+<section id="services" class="container py-5">
+    <h2 class="text-center mb-4">Nuestros Servicios</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let service of services">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title">{{ service.title }}</h3>
+            <p class="card-text">{{ service.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
