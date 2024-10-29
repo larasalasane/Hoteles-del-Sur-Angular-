@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../models/user.model';
+import {EventBusService} from '../../services/event-bus.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  isLoggedIn: boolean = true;
+  isLoggedIn: boolean = false;
+  loggedInUser: User | undefined = undefined;
 
-  constructor() {}
+  constructor(private eventBus:EventBusService) {}
+
+  ngOnInit() {
+    this.eventBus.loginEvent$.subscribe(user => {
+      this.loggedInUser = user;
+      this.isLoggedIn = true;
+    })
+  }
 }
