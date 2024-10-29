@@ -23,6 +23,9 @@ import { RoomsAvailabilityComponent } from './components/rooms-availability/room
 import { RoomAvailabilityService } from './services/room-availability.service';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 import { ReservationService } from './services/reservation.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { ReservationService } from './services/reservation.service';
     LandingPageComponent,
     ReservationFormComponent,
     RoomsAvailabilityComponent,
-    MyReservationsComponent
+    MyReservationsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,10 @@ import { ReservationService } from './services/reservation.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
-  providers: [RoomAvailabilityService,ReservationService],
+  providers: [RoomAvailabilityService,ReservationService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
