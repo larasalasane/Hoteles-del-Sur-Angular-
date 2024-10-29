@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,18 +8,17 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user = {
-    email: '',
-    password: ''
-  };
+
+  email : string = '';
+  password : string = '';
+
+  constructor(private userService: UserService) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.user.email = form.value.email;
-      this.user.password = form.value.password;
-      
-
-      console.log('Datos de inicio de sesión:', this.user);
+      this.email = form.value.email;
+      this.password = form.value.password;
+      this.userService.performLogin(this.email, this.password);
     }
-}
+  }
 }
