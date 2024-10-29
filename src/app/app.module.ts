@@ -21,6 +21,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { RoomsAvailabilityComponent } from './components/rooms-availability/rooms-availability.component';
 import { RoomAvailabilityService } from './services/room-availability.service';
+import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
+import { ReservationService } from './services/reservation.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RoomAvailabilityService } from './services/room-availability.service';
     FooterComponent,
     LandingPageComponent,
     ReservationFormComponent,
-    RoomsAvailabilityComponent
+    RoomsAvailabilityComponent,
+    MyReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { RoomAvailabilityService } from './services/room-availability.service';
     MatButtonModule,
     MatSelectModule
   ],
-  providers: [RoomAvailabilityService],
+  providers: [RoomAvailabilityService,ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
