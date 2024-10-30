@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module'; 
+import { AppRoutingModule } from './app-routing.module';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -23,6 +23,10 @@ import { RoomsAvailabilityComponent } from './components/rooms-availability/room
 import { RoomAvailabilityService } from './services/room-availability.service';
 import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 import { ReservationService } from './services/reservation.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {LoginComponent} from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,22 +38,28 @@ import { ReservationService } from './services/reservation.service';
     LandingPageComponent,
     ReservationFormComponent,
     RoomsAvailabilityComponent,
-    MyReservationsComponent
+    MyReservationsComponent,
+    ConfirmationDialogComponent,
+    MyReservationsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatSelectModule,
+    FormsModule
   ],
-  providers: [RoomAvailabilityService,ReservationService],
+  providers: [RoomAvailabilityService,ReservationService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

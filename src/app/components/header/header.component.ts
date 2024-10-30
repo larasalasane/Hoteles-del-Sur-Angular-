@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {User} from '../../models/user.model';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,20 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  isLoggedIn: boolean = true;
+  loggedInUser: User | undefined;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
+
+  userIsLoggedIn() {
+    let userString: string | null = sessionStorage.getItem('user');
+    if (userString) {
+      this.loggedInUser = JSON.parse(userString);
+      return true;
+    }
+    return false;
+  }
+
+  logout() {
+    this.userService.performLogout();
+  }
 }

@@ -18,4 +18,8 @@ export class ReservationService {
   getReservations(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/reservations`);
   }
+
+  deleteReservation(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/reservations/${id}`);
+  }
 }
