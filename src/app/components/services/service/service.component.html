@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="media-column">
+    <div *ngIf="videoMediaUrls" class="media-wrapper">
+      <div *ngFor="let videoUrl of videoMediaUrls" class="media-card">
+        <video [src]="videoUrl" width="640" height="360" frameborder="0" controls></video>
+      </div>
+    </div>
+    <div *ngIf="photoMedia" class="media-wrapper">
+      <div *ngFor="let photo of photoMedia" class="media-card">
+        <img [src]="photo.src.medium" alt="Image">
+      </div>
+    </div>
+  </div>
+  <div class="text-column">
+    <div class="media-card blank-card">
+      <h1> {{service.title}}</h1>
+      {{service.description}}
+    </div>
+  </div>
+</div>

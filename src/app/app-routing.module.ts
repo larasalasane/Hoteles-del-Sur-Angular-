@@ -5,6 +5,7 @@ import {MyReservationsComponent} from './components/my-reservations/my-reservati
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {ReservationComponent} from './components/reservation/reservation.component';
+import {ServicesComponent} from './components/services/services.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'reservations/:id', component: ReservationComponent},
+  {path: 'services', component: ServicesComponent},
 ];
 
 @NgModule({

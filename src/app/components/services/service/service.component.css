@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: flex-start; /* Aligns items at the start */
+}
+
+.media-column {
+  flex: 0 0 auto; /* Takes space based on content */
+  padding-right: 20px; /* Adds space between columns */
+  max-height: 80vh; /* Sets a max height for the media column */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+
+.text-column {
+  flex: 1; /* Takes all remaining space on the right */
+  max-height: 80vh; /* Optional: Sets a max height to limit overflow */
+  overflow: hidden; /* Prevents scrolling; lets content grow */
+}
+
+.media-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack media items vertically */
+  gap: 15px; /* Adds space between cards */
+}
+
+.media-card {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+}
+
+.media-card video,
+.media-card img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.blank-card {
+  height: 100%; /* Make this card take full height of the text column */
+  background-color: #f9f9f9; /* Light background for the blank card */
+  border: 1px dashed #ccc; /* Optional: a dashed border to indicate this is a placeholder */
+  border-radius: 8px;
+}
