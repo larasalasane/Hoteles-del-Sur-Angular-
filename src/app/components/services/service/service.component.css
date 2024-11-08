@@ -34,9 +34,15 @@
   flex: 0 0 auto;
 }
 
-.media-card video,
+.media-card video {
+  max-width: 640px; /* Set max width for videos */
+  width: 100%; /* Allow videos to scale down */
+  border-radius: 4px;
+}
+
 .media-card img {
-  max-width: 100%;
+  max-width: 320px; /* Set max width for images */
+  width: 100%; /* Allow images to scale down */
   border-radius: 4px;
 }
 

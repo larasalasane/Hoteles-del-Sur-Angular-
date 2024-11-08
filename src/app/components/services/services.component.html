@@ -1,3 +1,6 @@
-<div *ngFor = 'let service of services'>
-    <app-service [service] = "service"></app-service>
-</div>    
+<div *ngFor="let service of services">
+  <details>
+    <summary>{{ service.title }}</summary>
+    <app-service [service]="service"></app-service>
+  </details>
+</div>
