@@ -242,5 +242,32 @@
       "roomId": "117",
       "userId": "1"
     }
+  ],
+  "services": [
+    {
+      "id": "rnfyo3k",
+      "title": "Ballenas confortables (Salven a Willy)",
+      "description": "Disfruta de nuestras ballenas con todas las comodidades."
+    },
+    {
+      "id": "z1jrdyh",
+      "title": "Spa confortable",
+      "description": "Disfruta de nuestras habitaciones con todas las comodidades."
+    },
+    {
+      "id": "ck3kcfd",
+      "title": "Pinguinos confortables(Happy Feet)",
+      "description": "Disfruta de nuestros pinguinos con todas las comodidades."
+    },
+    {
+      "id": "",
+      "title": "El Trekking de tu vida",
+      "description": "Caminas hasta qu ete de un infarto"
+    },
+    {
+      "id": "",
+      "title": "El Habitat de tu imaginación",
+      "description": "Disfruta de nuestras habitaciones tematicas con todas las comodidades."
+    }
   ]
 }
