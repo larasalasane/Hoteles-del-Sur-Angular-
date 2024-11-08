@@ -38,6 +38,7 @@
             <p>Tipo: {{ room.type }}</p>
             <p>Capacidad: {{ room.details.capacity }}</p>
             <p>Precio por noche: ${{ room.details.pricePerNight }}</p>
+            <img [src]= "room.details.imageUrl" alt="Image">
             <button type="button"
                     (click)="selectRoom(room.id)"
                     [ngClass]="{'btn-success': reservation?.roomId === room.id, 'btn-secondary': reservation?.roomId !== room.id}"
