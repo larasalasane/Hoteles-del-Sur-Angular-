@@ -7,6 +7,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {ReservationComponent} from './components/reservation/reservation.component';
 import {ServicesComponent} from './components/services/services.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {ContactComponent} from './components/contact/contact.component'; // Importar ContactComponent
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'reservations/:id', component: ReservationComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'profile' , component: ProfileComponent},
+  {path: 'contact', component: ContactComponent},
 ];
 
 @NgModule({

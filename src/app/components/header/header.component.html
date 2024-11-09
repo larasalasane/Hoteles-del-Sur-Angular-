@@ -6,7 +6,7 @@
         <ul class="navbar-nav me-auto">
           <li class="nav-item"><a class="nav-link" (click)="goHome()">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" [routerLink]="['services']">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]= "['contact']">Contacto</a></li>
         </ul>
         <div *ngIf="userIsLoggedIn(); then userOptions else authOptions"></div>
         <ng-template #userOptions>

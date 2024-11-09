@@ -29,6 +29,7 @@ import { ReservationService } from './services/reservation.service';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { ServiceComponent } from './components/services/service/service.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ServiceComponent,
     ServicesComponent,
     ProfileComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
