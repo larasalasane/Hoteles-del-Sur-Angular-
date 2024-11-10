@@ -34,6 +34,7 @@ export class ServiceComponent implements OnInit {
         this.getServiceMedia();
       }
     )
+    setInterval(() => this.nextPhoto(), 6000);
   }
 
   async getServiceMedia(): Promise<void> {

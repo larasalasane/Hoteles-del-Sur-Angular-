@@ -7,26 +7,22 @@
 
 <div class="media-column">
   <div *ngIf="videoMediaUrls.length" class="video media-wrapper">
-    <div class="carrousel media-card">
-      <div *ngIf="videoMediaUrls.length > 0">
-        <video [src]="videoMediaUrls[currentVideoSlide]" frameborder="0" controls></video>
+    <div class="media-card" *ngIf="videoMediaUrls.length > 0">
+      <video [src]="videoMediaUrls[currentVideoSlide]" frameborder="0" controls></video>
+      <div class="carrousel-buttons">
+        <button class="prev-button" (click)="prevVideo()">&#10094;</button>
+        <button class="next-button" (click)="nextVideo()">&#10095;</button>
       </div>
-    </div>
-    <div class="carrousel-buttons">
-      <button class="prev-button" (click)="prevVideo()">&#10094;</button>
-      <button class="next-button" (click)="nextVideo()">&#10095;</button>
     </div>
   </div>
 
   <div *ngIf="photoMedia.length" class="photo media-wrapper">
-    <div class="carrousel media-card">
-      <div *ngIf="photoMedia.length > 0">
-        <img [src]="photoMedia[currentPhotoSlide].src.medium" alt="Image">
+    <div class="media-card" *ngIf="photoMedia.length > 0">
+      <img [src]="photoMedia[currentPhotoSlide].src.medium" alt="Image">
+      <div class="carrousel-buttons">
+        <button class="prev-button" (click)="prevPhoto()">&#10094;</button>
+        <button class="next-button" (click)="nextPhoto()">&#10095;</button>
       </div>
-    </div>
-    <div class="carrousel-buttons">
-      <button class="prev-button" (click)="prevPhoto()">&#10094;</button>
-      <button class="next-button" (click)="nextPhoto()">&#10095;</button>
     </div>
   </div>
 </div>

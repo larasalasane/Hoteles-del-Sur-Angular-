@@ -1,12 +1,4 @@
-.text-column {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
-  margin: 2%;
-}
-
-.media-column {
+.text-column, .media-column {
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -14,18 +6,6 @@
   margin: 2%;
   justify-content: space-between;
 }
-
-.text-column .media-card {
-  padding: 20px;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-
 
 .blank-card h1 {
   font-family: 'Candara', sans-serif;
@@ -43,54 +23,55 @@
   text-align: center;
 }
 
+.media-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 5px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.media-card video {
+  height: 360px !important;
+  width: auto;
+  padding: 0;
+}
+
+.media-card img {
+  height: 360px !important;
+  width: auto;
+}
+
+.media-card:hover {
+  transform: scale(1.1);
+}
+
 .media-wrapper {
   display: flex;
   flex-direction: column;
   flex: 1;
   margin: 2%;
   align-items: center;
-  max-width: 640px;
-  max-height: 360px;
   justify-content: space-between;
-}
-
-.carrousel {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 2%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.media-card{
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 2%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.media-wrapper video {
-  max-width: 100%;
-  width: auto;
-}
-
-.media-wrapper img {
-  max-height: 320px;
-  width: auto;
 }
 
 
 .carrousel-buttons {
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.prev-button,.next-button {
+.prev-button, .next-button {
   background-color: rgb(59, 136, 199);
   border: none;
   opacity: 70%;
@@ -106,6 +87,6 @@
 }
 
 .next-button {
-  align-self: flex-end; /* Right alignment (optional styling) */
+  align-self: flex-end;
 }
 
