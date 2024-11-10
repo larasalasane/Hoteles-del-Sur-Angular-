@@ -27,6 +27,9 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { ReservationService } from './services/reservation.service';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { ServiceComponent } from './components/services/service/service.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -42,7 +45,11 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     ConfirmationDialogComponent,
     LoginComponent,
     RegisterComponent,
-    ReservationComponent
+    ReservationComponent,
+    ServiceComponent,
+    ServicesComponent,
+    ProfileComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
