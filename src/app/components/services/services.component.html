@@ -1,6 +1,10 @@
-<div *ngFor="let service of services">
-  <details>
-    <summary>{{ service.title }}</summary>
-    <app-service [service]="service"></app-service>
-  </details>
+<div class="services-grid">
+  <div class="service-card" *ngFor="let service of services" (click)="setSelectedService(service)">
+    <img [src]="service.imageUrl" alt="{{ service.title }}" class="service-image" />
+    <h3 class="service-title">{{ service.title }}</h3>
+    <p class="service-subtitle">{{ service.subtitle }}</p>
+  </div>
+</div>
+<div>
+  <app-service *ngIf="selectedService" [service]="selectedService"></app-service>
 </div>
