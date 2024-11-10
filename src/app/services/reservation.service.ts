@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Reservation } from '../models/reservation.model';
 import {ReservationDataService} from './reservation-data.service';
 import {UserService} from './user.service';
@@ -10,10 +8,7 @@ import {UserService} from './user.service';
 })
 export class ReservationService {
 
-  private apiUrl = 'http://localhost:3000';
-
   constructor(
-    private http: HttpClient,
     private reservationDataService: ReservationDataService,
     private userService: UserService
   ) {}

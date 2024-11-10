@@ -7,33 +7,35 @@ import {Reservation} from '../models/reservation.model';
   providedIn: 'root'
 })
 export class ReservationDataService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'https://hoteles-del-sur-json-server.onrender.com/api/';
+  private resourceName = '/reservations'
+  private serverPath = this.apiUrl + this.resourceName;
 
   constructor(private http: HttpClient) {
   }
 
   createReservation(reservationData: Reservation): Promise<Reservation | undefined> {
-    return this.http.post<Reservation | undefined>(`${this.apiUrl}/reservations`, reservationData).toPromise();
+    return this.http.post<Reservation | undefined>(`${this.serverPath}`, reservationData).toPromise();
   }
 
 
   getReservationById(reservationId: string) {
-    return this.http.get<Reservation>(`${this.apiUrl}/reservations/${reservationId}`).toPromise();
+    return this.http.get<Reservation>(`${this.serverPath}/${reservationId}`).toPromise();
   }
 
   getReservations(): Promise<Reservation[] | undefined> {
-    return this.http.get<Reservation[]>(`${this.apiUrl}/reservations`).toPromise();
+    return this.http.get<Reservation[]>(`${this.serverPath}`).toPromise();
   }
 
   getUserReservations(reservationId: string): Promise<Reservation[] | undefined> {
-    return this.http.get<Reservation[]>(`${this.apiUrl}/reservations?userId=${reservationId}`).toPromise();
+    return this.http.get<Reservation[]>(`${this.serverPath}?userId=${reservationId}`).toPromise();
   }
 
   updateReservation(reservationId: string, reservationData: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.apiUrl}/reservations/${reservationId}`, reservationData);
+    return this.http.put<Reservation>(`${this.serverPath}/${reservationId}`, reservationData);
   }
 
   deleteReservation(reservationId: string): Promise<void> {
-    return this.http.delete<void>(`${this.apiUrl}/reservations/${reservationId}`).toPromise();
+    return this.http.delete<void>(`${this.serverPath}/${reservationId}`).toPromise();
   }
 }

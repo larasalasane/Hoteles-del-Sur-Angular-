@@ -7,12 +7,15 @@ import { Service } from '../models/service.model';
 })
 export class ServicesService {
 
-  private apiUrl = 'http://localhost:3000/services';
-  constructor( 
+  private apiUrl = 'https://hoteles-del-sur-json-server.onrender.com/api/';
+  private resourceName = '/services'
+  private serverPath = this.apiUrl + this.resourceName;
+
+  constructor(
     private http: HttpClient
   ) { }
 
   async getAllServices(): Promise< Service[] | undefined>{
-    return this.http.get<Service[]>(`${this.apiUrl}`).toPromise();
+    return this.http.get<Service[]>(`${this.serverPath}`).toPromise();
   }
 }
