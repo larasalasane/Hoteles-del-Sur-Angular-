@@ -1,0 +1,60 @@
+<div class="reservation-container">
+  <h2>Reserva</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="reservationForm" novalidate class="reservation-form">
+    <div class="availability-section">
+      <div class="form-group">
+        <label for="checkInDate">Check-In</label>
+        <input type="date" id="checkInDate" formControlName="checkInDate" required class="form-control" />
+        <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched" class="error">
+          La fecha de check-in es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="checkOutDate">Check-Out</label>
+        <input type="date" id="checkOutDate" formControlName="checkOutDate" required class="form-control" />
+        <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched" class="error">
+          La fecha de check-out es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="guests">Número de huéspedes</label>
+        <input type="number" id="guests" formControlName="guests" required min="1" class="form-control" />
+        <div *ngIf="reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched" class="error">
+          Debe ingresar al menos 1 huésped.
+        </div>
+      </div>
+
+      <button type="button" (click)="onCheckAvailability()" class="btn btn-primary confirm-btn">Verificar disponibilidad</button>
+    </div>
+
+    <div *ngIf="availableRooms.length > 0" class="rooms-section">
+      <br>
+      <h2 class="rooms-title">Seleccionar habitación</h2>
+      <div class="rooms-grid">
+        <div *ngFor="let room of availableRooms" class="room-card">
+          <div class="room-details">
+            <p>Tipo: {{ room.type }}</p>
+            <p>Capacidad: {{ room.details.capacity }}</p>
+            <p>Precio por noche: ${{ room.details.pricePerNight }}</p>
+            <img [src]= "room.details.imageUrl" alt="Image">
+            <button type="button"
+                    (click)="selectRoom(room.id)"
+                    [ngClass]="{'room-btn-success': reservation?.roomId === room.id, 'room-btn-secondary': reservation?.roomId !== room.id}"
+                    class="btn">
+              Seleccionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm-btn-wrapper">
+        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="!reservationForm.valid">
+          Confirmar Reserva
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
