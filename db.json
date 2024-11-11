@@ -2,69 +2,57 @@
   "users": [
     {
       "id": "1",
-      "user": {
-        "firstName": "Facundo",
-        "lastName": "Pérez",
-        "email": "facundo@example.com",
-        "phone": "123-456-7890",
-        "password": "123456",
-        "role": 1
-      }
+      "firstName": "Facundo",
+      "lastName": "Pérez",
+      "email": "facundo@example.com",
+      "phone": "123-456-7890",
+      "password": "123456",
+      "role": 1
     },
     {
       "id": "2",
-      "user": {
-        "firstName": "María",
-        "lastName": "Gómez",
-        "email": "maria@example.com",
-        "phone": "987-654-3210",
-        "password": "",
-        "role": 0
-      }
+      "firstName": "María",
+      "lastName": "Gómez",
+      "email": "maria@example.com",
+      "phone": "987-654-3210",
+      "password": "",
+      "role": 0
     },
     {
       "id": "3",
-      "user": {
-        "firstName": "Carlos",
-        "lastName": "López",
-        "email": "carlos@example.com",
-        "phone": "456-789-0123",
-        "password": "",
-        "role": 0
-      }
+      "firstName": "Carlos",
+      "lastName": "López",
+      "email": "carlos@example.com",
+      "phone": "456-789-0123",
+      "password": "",
+      "role": 0
     },
     {
       "id": "4",
-      "user": {
-        "firstName": "Laura",
-        "lastName": "Martínez",
-        "email": "laura@example.com",
-        "phone": "321-654-0987",
-        "password": "",
-        "role": 0
-      }
+      "firstName": "Laura",
+      "lastName": "Martínez",
+      "email": "laura@example.com",
+      "phone": "321-654-0987",
+      "password": "",
+      "role": 0
     },
     {
       "id": "5",
-      "user": {
-        "firstName": "Ricardo",
-        "lastName": "Díaz",
-        "email": "ricardo@example.com",
-        "phone": "654-123-7890",
-        "password": "",
-        "role": 0
-      }
+      "firstName": "Ricardo",
+      "lastName": "Díaz",
+      "email": "ricardo@example.com",
+      "phone": "654-123-7890",
+      "password": "",
+      "role": 0
     },
     {
       "id": "6cc7",
-      "user": {
-        "firstName": "Cristian",
-        "lastName": "Moraleda",
-        "email": "cristian@example.com",
-        "phoneNumber": "3216549873",
-        "password": "123456",
-        "role": 0
-      }
+      "firstName": "Cristian",
+      "lastName": "Moraleda",
+      "email": "cristian@example.com",
+      "phoneNumber": "3216549873",
+      "password": "123456",
+      "role": 0
     }
   ],
   "rooms": [

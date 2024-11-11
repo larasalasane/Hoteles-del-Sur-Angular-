@@ -14,11 +14,12 @@ export class UserService {
 
   performLogin(email: string, password: string) {
     this.userDataService.getUserByEmail(email).subscribe(
-      UserModels => {
-        if (UserModels && UserModels[0].user?.password === password) {
-          UserModels[0].user.password = '';
+      user => {
+        console.log(user);
+        if (user && user[0].password === password) {
+          user[0].password = '';
           this.router.navigateByUrl('home').then(() => {
-            sessionStorage.setItem('user', JSON.stringify(UserModels[0]));
+            sessionStorage.setItem('user', JSON.stringify(user[0]));
           });
         } else {
           console.error("Incorrect email or password.");
@@ -38,8 +39,8 @@ export class UserService {
       console.error('Error interno');
     }
     this.userDataService.getUserByEmail(email).subscribe(
-      UserModels => {
-        if (UserModels.length != 0) {
+      Users => {
+        if (Users.length != 0) {
           throw console.error('Email ya existente');
         } else {
           this.userDataService.createUser(user).subscribe();

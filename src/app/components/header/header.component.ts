@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Role, UserModel} from '../../models/user.model';
+import {Role, User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {EventBusService} from '../../services/event-bus.service';
@@ -11,7 +11,7 @@ import {EventBusService} from '../../services/event-bus.service';
 })
 export class HeaderComponent {
 
-  loggedInUserData: UserModel | undefined;
+  loggedInUser: User | undefined;
 
   constructor(
     private userService: UserService,
@@ -27,7 +27,7 @@ export class HeaderComponent {
   userIsLoggedIn() {
     let userString: string | null = sessionStorage.getItem('user');
     if (userString) {
-      this.loggedInUserData = JSON.parse(userString);
+      this.loggedInUser = JSON.parse(userString);
       return true;
     }
     return false;

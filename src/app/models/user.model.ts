@@ -1,8 +1,3 @@
-export class UserModel {
-  id: string | undefined;
-  user : User| undefined;
-}
-
 export class User {
   id: string | undefined;
   firstName: string | undefined;
