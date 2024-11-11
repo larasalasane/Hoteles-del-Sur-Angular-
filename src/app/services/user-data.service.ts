@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from '../models/user.model';
+import {User, UserModel} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class UserDataService {
     return this.http.get<User[]>(`${this.apiUrl}`);
   }
 
-  getUserByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}?email=${email}`);
+  getUserByEmail(email: string): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(`${this.apiUrl}?user.email=${email}`);
   }
 
   updateUser(user: User): Observable<User> {

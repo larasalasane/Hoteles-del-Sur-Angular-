@@ -38,11 +38,11 @@ export class RegisterComponent {
       let apellido = this.registerForm.get('lastName')?.value;
       let email = this.registerForm.get('email')?.value;
       let telefono = this.registerForm.get('phoneNumber')?.value;
-      let pass = this.registerForm.get('password')?.value;
+      let password = this.registerForm.get('password')?.value;
 
       try {
-        if (nombre && apellido && email && telefono && pass) {
-          let user: User = new User(nombre, apellido, email, telefono, pass);
+        if (nombre && apellido && email && telefono && password) {
+          let user: User = new User(nombre, apellido, email, telefono, password);
           this.userService.register(user);
         }
       } catch (error) {

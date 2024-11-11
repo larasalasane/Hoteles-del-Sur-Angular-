@@ -14,11 +14,11 @@ export class UserService {
 
   performLogin(email: string, password: string) {
     this.userDataService.getUserByEmail(email).subscribe(
-      user => {
-        if (user && user[0].password === password) {
-          user[0].password = '';
+      UserModels => {
+        if (UserModels && UserModels[0].user?.password === password) {
+          UserModels[0].user.password = '';
           this.router.navigateByUrl('home').then(() => {
-            sessionStorage.setItem('user', JSON.stringify(user[0]));
+            sessionStorage.setItem('user', JSON.stringify(UserModels[0]));
           });
         } else {
           console.error("Incorrect email or password.");
@@ -30,19 +30,19 @@ export class UserService {
     );
   }
 
-  register(userData: User): void {
-    let email : string = '';
-    if(userData.email){
-      email = userData.email;
-    }else{
+  register(user: User): void {
+    let email: string = '';
+    if (user.email) {
+      email = user.email;
+    } else {
       console.error('Error interno');
     }
     this.userDataService.getUserByEmail(email).subscribe(
-      users => {
-        if(users.length != 0 ){
+      UserModels => {
+        if (UserModels.length != 0) {
           throw console.error('Email ya existente');
-        }else{
-          this.userDataService.createUser(userData).subscribe();
+        } else {
+          this.userDataService.createUser(user).subscribe();
         }
       }
     )
@@ -57,13 +57,13 @@ export class UserService {
     this.router.navigateByUrl('home');
   }
 
-  getUserId(): string | undefined{
-    let currentUser : User = JSON.parse(<string>sessionStorage.getItem('user'));
+  getUserId(): string | undefined {
+    let currentUser: User = JSON.parse(<string>sessionStorage.getItem('user'));
     return currentUser.id;
   }
 
   getUserData(): User | null {
     const user = sessionStorage.getItem('user');
-    return user ? JSON.parse(user) : null; 
+    return user ? JSON.parse(user) : null;
   }
 }

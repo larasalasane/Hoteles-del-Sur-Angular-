@@ -10,7 +10,7 @@
         </ul>
         <div *ngIf="userIsLoggedIn(); then loggedInOptions else authOptions"></div>
         <ng-template #loggedInOptions>
-          <div *ngIf="loggedInUser?.role == Role.ADMIN_ROLE; then adminOptions else userOptions"></div>
+          <div *ngIf="loggedInUserData?.user?.role == Role.ADMIN_ROLE; then adminOptions else userOptions"></div>
           <ng-template #adminOptions>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">

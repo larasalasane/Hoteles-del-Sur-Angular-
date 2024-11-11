@@ -36,10 +36,8 @@ export class AvailabilityService {
         if (fr.roomId) reservationRoomIds.push(fr.roomId)
       });
 
-    console.log(reservationRoomIds);
-
     const foundRooms = await this.roomDataService.getRooms();
-    
+
     return foundRooms ? foundRooms
       .filter(fr => fr.details.available)
       .filter(fr => !reservationRoomIds.includes(fr.id))
