@@ -49,7 +49,7 @@
   width: auto;
 }
 
-.media-card:hover {
+.media-card.actual:hover {
   transform: scale(1.1);
 }
 

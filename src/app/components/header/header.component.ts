@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User} from '../../models/user.model';
+import {User,Role} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {EventBusService} from '../../services/event-bus.service';
@@ -36,4 +36,6 @@ export class HeaderComponent {
   logout() {
     this.userService.performLogout();
   }
+
+  protected readonly Role = Role;
 }

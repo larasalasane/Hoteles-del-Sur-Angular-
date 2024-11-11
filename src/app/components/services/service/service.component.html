@@ -7,7 +7,7 @@
 
 <div class="media-column">
   <div *ngIf="videoMediaUrls.length" class="video media-wrapper">
-    <div class="media-card" *ngIf="videoMediaUrls.length > 0">
+    <div class="actual media-card" *ngIf="videoMediaUrls.length > 0">
       <video [src]="videoMediaUrls[currentVideoSlide]" frameborder="0" controls></video>
       <div class="carrousel-buttons">
         <button class="prev-button" (click)="prevVideo()">&#10094;</button>
@@ -17,7 +17,7 @@
   </div>
 
   <div *ngIf="photoMedia.length" class="photo media-wrapper">
-    <div class="media-card" *ngIf="photoMedia.length > 0">
+    <div class="actual media-card" *ngIf="photoMedia.length > 0">
       <img [src]="photoMedia[currentPhotoSlide].src.medium" alt="Image">
       <div class="carrousel-buttons">
         <button class="prev-button" (click)="prevPhoto()">&#10094;</button>
