@@ -44,15 +44,6 @@
       "phone": "654-123-7890",
       "password": "",
       "role": 0
-    },
-    {
-      "id": "6cc7",
-      "firstName": "Cristian",
-      "lastName": "Moraleda",
-      "email": "cristian@example.com",
-      "phoneNumber": "3216549873",
-      "password": "123456",
-      "role": 0
     }
   ],
   "rooms": [

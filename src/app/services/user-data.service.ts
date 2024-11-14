@@ -12,7 +12,7 @@ export class UserDataService {
   private apiUrl = 'http://localhost:3000/users';
 
   createUser(user : User) : Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}`, {user});
+    return this.http.post<User>(`${this.apiUrl}`,user);
   }
 
   getUsers() : Observable<User[]> {
