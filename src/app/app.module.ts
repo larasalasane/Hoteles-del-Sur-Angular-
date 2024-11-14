@@ -30,6 +30,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { ServiceComponent } from './components/services/service/service.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ContactComponent } from './components/contact/contact.component';
     ServiceComponent,
     ServicesComponent,
     ProfileComponent,
-    ContactComponent
+    ContactComponent,
+    AddRoomsComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,7 @@ import { ContactComponent } from './components/contact/contact.component';
     MatDialogModule,
     FormsModule
   ],
-  providers: [ReservationService], // Add AuthService here
+  providers: [ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
