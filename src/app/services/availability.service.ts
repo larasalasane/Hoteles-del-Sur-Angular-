@@ -13,48 +13,62 @@ export class AvailabilityService {
   constructor(private roomDataService: RoomDataService, private reservationService: ReservationService) {
   }
 
-  async getAvailableRooms(reservation: Reservation): Promise<Room[]> {
+  async getAvailableRooms(reservationForm: any): Promise<Room[]> {
 
     let today: Date = new Date();
     today.setHours(0, 0, 0, 0);
 
-    reservation = this.setLocalDates(reservation);
+    reservationForm = this.setLocalDates(reservationForm);
 
-    if ((reservation.checkInDate < today) || reservation.checkOutDate < reservation.checkInDate) {
+    console.log(reservationForm.checkInDate);
+    console.log(reservationForm.checkOutDate);
+
+    if ((reservationForm.checkInDate < today) || reservationForm.checkOutDate < reservationForm.checkInDate) {
       throw new Error("Las fechas de checkIn / checkOutDate son invalidas");
     }
 
 
     const foundReservations = await this.reservationService.getReservations();
 
-    let reservationRoomIds: string[] = [];
+    let reservedRoomIds: string[] = [];
 
     if (foundReservations) foundReservations
-      .filter(fr => reservation.checkInDate <= fr.checkOutDate)
-      .filter(fr => reservation.checkOutDate >= fr.checkInDate)
+      .filter(fr => {
+        console.log(fr.checkInDate);
+        console.log(fr.checkOutDate);
+        return reservationForm.checkInDate <= fr.checkOutDate
+      })
+      .filter(fr => reservationForm.checkOutDate >= fr.checkInDate)
       .forEach(fr => {
-        if (fr.roomId) reservationRoomIds.push(fr.roomId)
+        if (fr.roomId) reservedRoomIds.push(fr.roomId)
       });
+
+    console.log("Reserved Rooms", reservedRoomIds);
 
     const foundRooms = await this.roomDataService.getRooms();
 
     return foundRooms ? foundRooms
       .filter(fr => fr.details.available)
-      .filter(fr => !reservationRoomIds.includes(fr.id))
-      .filter(fr => fr.details.capacity >= reservation.guests) : [];
+      .filter(fr => fr.details.capacity >= reservationForm.guests)
+      .map(fr => {
+        if (reservedRoomIds.includes(fr.id)) {
+          fr.details.available = false
+        }
+        return fr;
+      }) : [];
   }
 
-  setLocalDates(reservation : Reservation): Reservation {
+  setLocalDates(reservation: Reservation): Reservation {
     reservation.checkInDate = new Date(reservation.checkInDate + 'T00:00:00');
     reservation.checkOutDate = new Date(reservation.checkOutDate + 'T00:00:00');
     return reservation;
   }
 
-  async roomExists(roomId : string): Promise<boolean> {
+  async roomExists(roomId: string): Promise<boolean> {
     try {
       const response = await this.roomDataService.getRoomById(roomId);
       return true;
-    } catch (error){
+    } catch (error) {
       return false;
     }
   }
