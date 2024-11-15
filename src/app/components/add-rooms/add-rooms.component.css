@@ -1,0 +1,31 @@
+.room-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .room-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .room-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #210a5e;
+  }
+  
+  .room-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid
+  }

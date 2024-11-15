@@ -9,6 +9,7 @@ import {ServicesComponent} from './components/services/services.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ContactComponent} from './components/contact/contact.component'; // Importar ContactComponent
 import { ServiceFormComponent } from './components/service-form/service-form.component';
+import {AddRoomsComponent } from './components/add-rooms/add-rooms.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'services/add', component: ServiceFormComponent},
   {path: 'profile' , component: ProfileComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'rooms/add', component: AddRoomsComponent},
 ];
 
 @NgModule({

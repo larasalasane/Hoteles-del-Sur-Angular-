@@ -20,7 +20,7 @@ export class RoomDataService {
     return this.http.get<Room[]>(`${this.apiUrl}`).toPromise();
   }
 
-  getRoomById(id: number): Observable<Room> {
+  getRoomById(id: string): Observable<Room> {
     return this.http.get<Room>(`${this.apiUrl}?id=${id}`);
   }
 
@@ -31,4 +31,5 @@ export class RoomDataService {
   deleteRoom(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}?id=${id}`);
   }
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Location } from '@angular/common';  // Asegúrate de importar Location
+import { Location } from '@angular/common';  
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';  // Asegúrate de importar Location
 export class ProfileComponent implements OnInit {
   userData: any;
 
-  constructor(private userService: UserService, private location: Location) {}  // Inyección correcta
+  constructor(private userService: UserService, private location: Location) {}  
 
   ngOnInit(): void {
     if (!this.userService.userIsLoggedIn()) {
@@ -22,6 +22,6 @@ export class ProfileComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back(); // Aquí usamos el servicio Location
+    this.location.back(); 
   }
 }
