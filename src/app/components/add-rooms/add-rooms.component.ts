@@ -30,7 +30,6 @@ export class AddRoomsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // Validador personalizado para la URL de la imagen de Pexels
   pexelsImageValidator(control: any) {
     const url = control.value;
     if (!url) {
@@ -45,9 +44,7 @@ export class AddRoomsComponent implements OnInit {
       const newRoom = this.roomForm.value;
 
       this.roomDataService.createRoom(newRoom).subscribe(
-        () => {
-          //  this.router.navigateByUrl('/rooms');
-        },
+        () => {},
         (error) => console.error('Error al añadir la habitación:', error)
       );
 

@@ -21,10 +21,11 @@ export class ServiceFormComponent implements OnInit {
     private router: Router
   ) {
     this.serviceForm = this.fb.group({
+      id: ['', Validators.required,idValidator],
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: [''],
+      imageUrl: ['',Validators.required,imageUrlValidator],
     });
   }
 
@@ -36,7 +37,7 @@ export class ServiceFormComponent implements OnInit {
       try {
         const addedService = await this.servicesService.addService(newService);
         if (addedService) {
-          this.serviceForm.reset(); 
+          this.serviceForm.reset();
           this.successMessage = true;
           setTimeout(() => this.successMessage = false, 3000);
           await this.router.navigateByUrl(`/services/${addedService.id}`);
@@ -50,13 +51,11 @@ export class ServiceFormComponent implements OnInit {
   }
 }
 
-// Validador de URL de Imagen
 export function imageUrlValidator(control: AbstractControl): ValidationErrors | null {
   const urlPattern = /^https:\/\/images\.pexels\.com\/photos\/\d+\/$/;
   return urlPattern.test(control.value) ? null : { invalidUrl: true };
 }
 
-// Validador de ID
 export async function idValidator(control: AbstractControl, pexelService : PexelService): Promise<ValidationErrors | null> {
   return await pexelService.collectionExists(control.value) ? null : { invalidId: true };
 }

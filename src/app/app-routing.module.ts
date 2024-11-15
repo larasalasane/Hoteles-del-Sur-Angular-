@@ -7,7 +7,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {ReservationComponent} from './components/reservation/reservation.component';
 import {ServicesComponent} from './components/services/services.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {ContactComponent} from './components/contact/contact.component'; // Importar ContactComponent
+import {ContactComponent} from './components/contact/contact.component';
 import { ServiceFormComponent } from './components/service-form/service-form.component';
 import {AddRoomsComponent } from './components/add-rooms/add-rooms.component';
 
