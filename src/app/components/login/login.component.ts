@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -11,14 +11,19 @@ export class LoginComponent {
 
   email : string = '';
   password : string = '';
+  loginForm: FormGroup;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private formBuilder : FormBuilder
+    ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['',[Validators.required,Validators.email]],
+      password: ['',Validators.required]
+    })
+  }
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.email = form.value.email;
-      this.password = form.value.password;
-      this.userService.performLogin(this.email, this.password);
-    }
+  onSubmit() {
+      this.userService.performLogin(this.loginForm.value);
   }
 }
