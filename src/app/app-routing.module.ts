@@ -10,6 +10,8 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ContactComponent} from './components/contact/contact.component';
 import { ServiceFormComponent } from './components/service-form/service-form.component';
 import {AddRoomsComponent } from './components/add-rooms/add-rooms.component';
+import { ViewServiceComponent } from './components/view-service/view-service.component';
+import { ServiceListComponent } from './components/service-list/service-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'reservations/:id', component: ReservationComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'services/add', component: ServiceFormComponent},
+  {path: 'services/:id', component: ViewServiceComponent},
+  {path: 'services/list', component: ServiceListComponent},
   {path: 'profile' , component: ProfileComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'rooms/add', component: AddRoomsComponent},

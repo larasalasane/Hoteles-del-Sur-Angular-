@@ -21,11 +21,11 @@ export class ServiceFormComponent implements OnInit {
     private router: Router
   ) {
     this.serviceForm = this.fb.group({
-      id: ['', Validators.required,idValidator],
+      id: ['', Validators.required],
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['',Validators.required,imageUrlValidator],
+      imageUrl: ['',Validators.required],
     });
   }
 
