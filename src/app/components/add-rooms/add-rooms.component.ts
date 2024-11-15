@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 import { RoomDataService } from '../../services/room-data.service';
 import { AvailabilityService } from '../../services/availability.service';
+import { CustomValidators } from '../../validators/custom-validators';
 
 
 @Component({
@@ -20,24 +21,15 @@ export class AddRoomsComponent implements OnInit {
     private router: Router
   ) {
     this.roomForm = this.fb.group({
-      numero: ['', Validators.required, idValidatorRoom],
+      numero: ['', Validators.required, CustomValidators.idValidatorRoom],
       type: ['', Validators.required],
       capacity: ['', Validators.required, Validators.min(1)],
       pricePerNight: ['', Validators.required, Validators.min(0)],
-      imageUrl: ['', [Validators.required, this.pexelsImageValidator]]
+      imageUrl: ['', [Validators.required, CustomValidators.idValidator]]
     });
   }
 
   ngOnInit(): void { }
-
-  pexelsImageValidator(control: any) {
-    const url = control.value;
-    if (!url) {
-      return null;
-    }
-    const valid = url.includes('pexels.com');
-    return valid ? null : { invalidImageUrl: 'La URL debe ser de Pexels' };
-  }
 
   async onSubmit(): Promise<void> {
     if (this.roomForm.valid) {
@@ -54,6 +46,3 @@ export class AddRoomsComponent implements OnInit {
   }
 }
 
-export async function idValidatorRoom(control: AbstractControl, availabilityService: AvailabilityService) : Promise<ValidationErrors | null> {
-  return await availabilityService.roomExists(control.value)?null : {invalidId:true};
-}

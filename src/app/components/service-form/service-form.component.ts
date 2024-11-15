@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from '../../services/services.service';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { PexelService } from '../../services/pexel.service';
+import { CustomValidators } from '../../validators/custom-validators';
 
 
 @Component({
@@ -21,11 +20,11 @@ export class ServiceFormComponent implements OnInit {
     private router: Router
   ) {
     this.serviceForm = this.fb.group({
-      id: ['', Validators.required,idValidator],
+      id: ['', Validators.required, CustomValidators.idValidator],
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['',Validators.required,imageUrlValidator],
+      imageUrl: ['',Validators.required,CustomValidators.imageUrlValidator],
     });
   }
 
@@ -51,14 +50,6 @@ export class ServiceFormComponent implements OnInit {
   }
 }
 
-export function imageUrlValidator(control: AbstractControl): ValidationErrors | null {
-  const urlPattern = /^https:\/\/images\.pexels\.com\/photos\/\d+\/$/;
-  return urlPattern.test(control.value) ? null : { invalidUrl: true };
-}
-
-export async function idValidator(control: AbstractControl, pexelService : PexelService): Promise<ValidationErrors | null> {
-  return await pexelService.collectionExists(control.value) ? null : { invalidId: true };
-}
 
 
 
