@@ -5,6 +5,7 @@ import {ReservationService} from '../../services/reservation.service';
 import {AvailabilityService} from '../../services/availability.service';
 import {Reservation} from '../../models/reservation.model';
 import {Router} from '@angular/router';
+import {CustomValidators} from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-reservation-form',
@@ -24,9 +25,9 @@ export class ReservationFormComponent implements OnInit {
     private router : Router,
   ) {
     this.reservationForm = this.fb.group({
-      checkInDate: [Validators.required],
-      checkOutDate: [Validators.required],
-      guests: [[Validators.required, Validators.min(1)]],
+      checkInDate: ['',[Validators.required,CustomValidators.checkInValidator()]],
+      checkOutDate: ['',[Validators.required,CustomValidators.checkOutValidator()]],
+      guests: [1,[Validators.required, Validators.min(1),Validators.max(4)]],
       roomId: [Validators.required],
     });
   }
@@ -40,7 +41,7 @@ export class ReservationFormComponent implements OnInit {
 
     if (checkInDate && checkOutDate && guests){
       this.reservation = new Reservation(checkInDate,checkOutDate,guests);
-      this.availableRooms = await this.availabilityService.getAvailableRooms(this.reservation);    
+      this.availableRooms = await this.availabilityService.getAvailableRooms(this.reservation);
     } else {
       console.log("Form invalido")
     }

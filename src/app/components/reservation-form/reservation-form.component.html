@@ -6,7 +6,12 @@
         <label for="checkInDate">Check-In</label>
         <input type="date" id="checkInDate" formControlName="checkInDate" required class="form-control" />
         <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched" class="error">
-          La fecha de check-in es obligatoria.
+          <div *ngIf="reservationForm.get('checkInDate')?.hasError('required')">
+            El campo es requerido
+          </div>
+          <div *ngIf="reservationForm.get('checkInDate')?.hasError('checkInInvalid')">
+            La fecha del check-in es invalida
+          </div>
         </div>
       </div>
 
@@ -14,7 +19,12 @@
         <label for="checkOutDate">Check-Out</label>
         <input type="date" id="checkOutDate" formControlName="checkOutDate" required class="form-control" />
         <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched" class="error">
-          La fecha de check-out es obligatoria.
+          <div *ngIf="reservationForm.get('checkOutDate')?.hasError('required')">
+            El campo es requerido
+          </div>
+          <div *ngIf="reservationForm.get('checkOutDate')?.hasError('checkOutInvalid')">
+            La fecha del check-out es invalida
+          </div>
         </div>
       </div>
 
@@ -26,7 +36,7 @@
         </div>
       </div>
 
-      <button type="button" (click)="onCheckAvailability()" class="btn btn-primary confirm-btn">Verificar disponibilidad</button>
+      <button type="button" (click)="onCheckAvailability()" class="btn btn-primary confirm-btn" [disabled]="reservationForm.invalid">Verificar disponibilidad</button>
     </div>
 
     <div *ngIf="availableRooms.length > 0" class="rooms-section">
