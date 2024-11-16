@@ -15,7 +15,7 @@ import {CustomValidators} from '../../validators/custom-validators';
 
 export class ReservationFormComponent implements OnInit {
   reservationForm: FormGroup;
-  availableRooms: Room[] = [];
+  rooms: Room[] = [];
   reservation : Reservation | undefined;
 
   constructor(
@@ -35,13 +35,8 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   async onCheckAvailability(): Promise<void> {
-    const checkInDate = this.reservationForm.get('checkInDate')?.value;
-    const checkOutDate = this.reservationForm.get('checkOutDate')?.value;
-    const guests = this.reservationForm.get('guests')?.value;
-
-    if (checkInDate && checkOutDate && guests){
-      this.reservation = new Reservation(checkInDate,checkOutDate,guests);
-      this.availableRooms = await this.availabilityService.getAvailableRooms(this.reservation);
+    if (this.reservationForm.valid){
+      this.rooms = await this.availabilityService.getAvailableRooms(this.reservationForm.value);
     } else {
       console.log("Form invalido")
     }
