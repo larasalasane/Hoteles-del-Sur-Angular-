@@ -9,7 +9,9 @@ import { catchError, map, Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class CustomValidators {
-
+  static availabilityService: AvailabilityService;
+  static pexelService: PexelService;
+  static userDataService: UserDataService;
 
   constructor() {
 
@@ -52,13 +54,13 @@ export class CustomValidators {
     return await CustomValidators.availabilityService.roomExists(control.value) ? null : { invalidId: true };
   }*/
 
-  static idValidatorRoom(availabilityService: AvailabilityService): AsyncValidatorFn {
+  static idValidatorRoom(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<{ [key: number]: any } | null> => {
       if (control.value == '') {
         return null as any;
       }
       else {
-        return availabilityService.roomExists(control.value)
+        return this.availabilityService.roomExists(control.value)
           .then(response => {
             return response ? { 'roomExists': { value: control.value } } : null;
           });
@@ -86,13 +88,13 @@ export class CustomValidators {
     return await CustomValidators.pexelService.collectionExists(control.value) ? null : { invalidId: true };
   }*/
 
-  static idValidator(pexelService: PexelService): AsyncValidatorFn {
+  static idValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<{ [key: string]: any } | null> => {
       if (control.value == '') {
         return null as any;
       }
       else {
-        return pexelService.collectionExists(control.value)
+        return this.pexelService.collectionExists(control.value)
           .then(response => {
             return response ? { 'collectionExists': { value: control.value } } : null;
           });
@@ -100,13 +102,13 @@ export class CustomValidators {
     };
   }
 
-  static emailExists(userDataService: UserDataService): AsyncValidatorFn {
+  static emailExists(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       if (!control.value) {
         return of(null);
       }
 
-      return userDataService.getUserByEmail(control.value).pipe(
+      return this.userDataService.getUserByEmail(control.value).pipe(
         map(users => (users && users.length > 0 ? { emailExists: { value: control.value } } : null)),
         catchError(() => of(null))
       );
