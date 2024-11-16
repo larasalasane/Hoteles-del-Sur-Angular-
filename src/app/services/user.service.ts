@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {UserDataService} from './user-data.service';
 import {Router} from '@angular/router';
-import {User} from '../models/user.model';
+import {Role, User} from '../models/user.model';
 import {log} from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
+import {catchError, map, Observable, of} from 'rxjs';
 
 
 @Injectable({
@@ -31,22 +32,17 @@ export class UserService {
     );
   }
 
-  register(user: User): void {
-    let email: string = '';
-    if (user.email) {
-      email = user.email;
-    } else {
-      console.error('Error interno');
-    }
-    this.userDataService.getUserByEmail(email).subscribe(
-      Users => {
-        if (Users.length != 0) {
-          throw console.error('Email ya existente');
+  register(userForm : any): void {
+    this.emailAlreadyExists(userForm.email).subscribe(
+      result => {
+        if (result) {
+          console.log('User already exists');
         } else {
-          this.userDataService.createUser(user).subscribe();
+          userForm.role = Role.USER_ROLE;
+          this.userDataService.createUser(userForm).subscribe();
         }
       }
-    )
+    );
   }
 
   userIsLoggedIn(): boolean {
@@ -66,5 +62,12 @@ export class UserService {
   getUserData(): User | null {
     const user = sessionStorage.getItem('user');
     return user ? JSON.parse(user) : null;
+  }
+
+  emailAlreadyExists(email: string) : Observable<boolean> {
+    return this.userDataService.getUserByEmail(email).pipe(
+      map(users => users.length > 0),
+      catchError(() => of(false))
+    )
   }
 }

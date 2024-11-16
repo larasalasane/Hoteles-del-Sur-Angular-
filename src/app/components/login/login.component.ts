@@ -9,8 +9,6 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginComponent {
 
-  email : string = '';
-  password : string = '';
   loginForm: FormGroup;
 
   constructor(

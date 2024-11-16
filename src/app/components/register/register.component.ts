@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {CustomValidators} from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email], CustomValidators.emailAlreadyExists(userService)],
       phoneNumber: [
         '',
         [Validators.required, Validators.pattern(/^[0-9]{10}$/)],
@@ -31,19 +31,10 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      let nombre = this.registerForm.get('firstName')?.value;
-      let apellido = this.registerForm.get('lastName')?.value;
-      let email = this.registerForm.get('email')?.value;
-      let telefono = this.registerForm.get('phoneNumber')?.value;
-      let password = this.registerForm.get('password')?.value;
-
       try {
-        if (nombre && apellido && email && telefono && password) {
-          let user: User = new User(nombre, apellido, email, telefono, password);
-          this.userService.register(user);
-        }
+        this.userService.register(this.registerForm.value);
       } catch (error) {
-        console.error(error);
+        this.registerError = true;
       }
     }
   }

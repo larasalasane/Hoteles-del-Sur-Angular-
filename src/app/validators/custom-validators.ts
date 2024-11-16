@@ -1,19 +1,16 @@
 import {Injectable} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {PexelsService} from '../services/pexels.service';
-import {UserDataService} from '../services/user-data.service';
 import {catchError, map, Observable, of} from 'rxjs';
 import {RoomDataService} from "../services/room-data.service";
+import {UserService} from "../services/user.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CustomValidators {
-    static userDataService: UserDataService;
 
-    constructor() {
-
-    }
+    constructor() {}
 
     static checkInValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
@@ -84,14 +81,13 @@ export class CustomValidators {
     }
 
 
-    static emailExists(): AsyncValidatorFn {
+    static emailAlreadyExists(userService: UserService): AsyncValidatorFn {
         return (control: AbstractControl): Observable<ValidationErrors | null> => {
             if (!control.value) {
                 return of(null);
             }
-
-            return this.userDataService.getUserByEmail(control.value).pipe(
-                map(users => (users && users.length > 0 ? {emailExists: {value: control.value}} : null)),
+            return userService.emailAlreadyExists(control.value).pipe(
+                map(result => result ? {emailAlreadyExists: {value: control.value}} : null),
                 catchError(() => of(null))
             );
         };
