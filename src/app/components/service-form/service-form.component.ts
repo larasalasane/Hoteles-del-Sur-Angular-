@@ -20,6 +20,7 @@ export class ServiceFormComponent implements OnInit {
     private router: Router
   ) {
     this.serviceForm = this.fb.group({
+      id: ['', Validators.required],
       id: ['', Validators.required, CustomValidators.idValidator],
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
