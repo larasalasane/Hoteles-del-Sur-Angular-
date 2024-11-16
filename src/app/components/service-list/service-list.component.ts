@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-list',
   templateUrl: './service-list.component.html',
   styleUrl: './service-list.component.css'
 })
-export class ServiceListComponent {
+export class ServiceListComponent implements OnInit{
 
   services: any[] = [];
 
   constructor(private serviceService: ServicesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ){
 
   }
@@ -44,6 +46,10 @@ export class ServiceListComponent {
   async getServices(){
     const services = await this.serviceService.getAllServices()
     if (services) this.services = services;
+  }
+
+  goToAddServices(){
+    this.router.navigate(['/services/add'])
   }
 
 
