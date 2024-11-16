@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ServicesService } from '../../services/services.service';
-import { CustomValidators } from '../../validators/custom-validators';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ServicesService} from '../../services/services.service';
+import {CustomValidators} from '../../validators/custom-validators';
+import {PexelsService} from '../../services/pexels.service';
 
 
 @Component({
@@ -15,20 +16,23 @@ export class ServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   successMessage: boolean = false;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private servicesService: ServicesService,
-    private router: Router
+    private router: Router,
+    pexelsService: PexelsService
   ) {
     this.serviceForm = this.fb.group({
-      id: ['', Validators.required],
-      title: ['', Validators.required],
-      subtitle: ['', Validators.required],
-      description: ['', Validators.required],
-      imageUrl: ['',Validators.required,CustomValidators.imageUrlValidator],
+      id: ['imbkzhu', Validators.required, CustomValidators.collectionExist(pexelsService)],
+      title: ['asd', Validators.required],
+      subtitle: ['asdasd', Validators.required],
+      description: ['asdasdasd', Validators.required],
+      imageUrl: ['', [Validators.required, CustomValidators.imageUrlValidator()]],
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   async onSubmit(): Promise<void> {
     if (this.serviceForm.valid) {

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { EventBusService } from '../../services/event-bus.service';
-import { PexelsService } from '../../services/pexels.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import {Component, OnInit} from '@angular/core';
+import {EventBusService} from '../../services/event-bus.service';
+import {PexelsService} from '../../services/pexels.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,7 +11,7 @@ export class LandingPageComponent implements OnInit {
   photoMedia: any[] = [];
   photoCount: number = 0;
 
-  constructor(private pexelService: PexelsService, private eventBus: EventBusService, private sanitizer: DomSanitizer) {
+  constructor(private pexelService: PexelsService, private eventBus: EventBusService) {
   }
 
   showReservationForm: boolean = false;
@@ -32,6 +31,8 @@ export class LandingPageComponent implements OnInit {
         this.photoMedia = collection.media.filter(media => media.type === 'Photo');
         this.photoCount = this.photoMedia.length;
       }
-    } catch (error) { console.error('Error fetching media:', error); }
+    } catch (error) {
+      console.error('Error fetching media:', error);
+    }
   }
 }

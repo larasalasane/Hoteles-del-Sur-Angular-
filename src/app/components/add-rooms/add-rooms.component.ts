@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { RoomDataService } from '../../services/room-data.service';
-import { AvailabilityService } from '../../services/availability.service';
-import { CustomValidators } from '../../validators/custom-validators';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {RoomDataService} from '../../services/room-data.service';
+import {CustomValidators} from '../../validators/custom-validators';
 
 
 @Component({
@@ -17,26 +15,27 @@ export class AddRoomsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private roomDataService: RoomDataService,
-    private router: Router
+    private roomDataService: RoomDataService
   ) {
     this.roomForm = this.fb.group({
       numero: ['', Validators.required, CustomValidators.idValidatorRoom],
       type: ['', Validators.required],
       capacity: ['', Validators.required, Validators.min(1)],
       pricePerNight: ['', Validators.required, Validators.min(0)],
-      imageUrl: ['', [Validators.required, CustomValidators.idValidator]]
+      imageUrl: ['', [Validators.required, CustomValidators.imageUrlValidator]]
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   async onSubmit(): Promise<void> {
     if (this.roomForm.valid) {
       const newRoom = this.roomForm.value;
 
       this.roomDataService.createRoom(newRoom).subscribe(
-        () => {},
+        () => {
+        },
         (error) => console.error('Error al añadir la habitación:', error)
       );
 

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Photo, Video} from 'pexels';
+import {catchError, from, map, Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,15 +24,12 @@ export class PexelsService {
     return this.http.get<Collection>(this.pexelApiUrl + `/${(collectionId)}`, {headers: this.headers}).toPromise();
   }
 
-   async collectionExists(collectionId: string): Promise<boolean> {
-    try {
-      const response = await this.getCollectionMedia(collectionId);
-      return true;
-    } catch (error) {
-      return false;
-    }
+  collectionExists(collectionId: string): Observable<boolean> {
+    return from(this.getCollectionMedia(collectionId)).pipe(
+      map((collection) => collection !== undefined),
+      catchError(() => of(false))
+    );
   }
-
 }
 
 export interface Collection {
