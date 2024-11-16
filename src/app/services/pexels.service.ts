@@ -5,7 +5,7 @@ import {Photo, Video} from 'pexels';
 @Injectable({
   providedIn: 'root'
 })
-export class PexelService {
+export class PexelsService {
 
   pexelApiUrl: string = 'https://api.pexels.com/v1/collections';
   headers: HttpHeaders = new HttpHeaders({
@@ -26,11 +26,11 @@ export class PexelService {
    async collectionExists(collectionId: string): Promise<boolean> {
     try {
       const response = await this.getCollectionMedia(collectionId);
-      return true; 
+      return true;
     } catch (error) {
-      return false; 
+      return false;
     }
-  }  
+  }
 
 }
 

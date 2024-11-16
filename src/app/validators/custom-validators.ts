@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { AvailabilityService } from '../services/availability.service';
-import { PexelService } from '../services/pexel.service';
+import { PexelsService } from '../services/pexels.service';
 import { UserDataService } from '../services/user-data.service';
 import { catchError, map, Observable, of } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 })
 export class CustomValidators {
   static availabilityService: AvailabilityService;
-  static pexelService: PexelService;
+  static pexelService: PexelsService;
   static userDataService: UserDataService;
 
   constructor() {

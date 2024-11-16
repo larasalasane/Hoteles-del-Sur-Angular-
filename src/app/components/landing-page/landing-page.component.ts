@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventBusService } from '../../services/event-bus.service';
-import { PexelService } from '../../services/pexel.service';
+import { PexelsService } from '../../services/pexels.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -12,7 +12,7 @@ export class LandingPageComponent implements OnInit {
   photoMedia: any[] = [];
   photoCount: number = 0;
 
-  constructor(private pexelService: PexelService, private eventBus: EventBusService, private sanitizer: DomSanitizer) {
+  constructor(private pexelService: PexelsService, private eventBus: EventBusService, private sanitizer: DomSanitizer) {
   }
 
   showReservationForm: boolean = false;

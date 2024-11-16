@@ -21,7 +21,6 @@ export class ServiceFormComponent implements OnInit {
   ) {
     this.serviceForm = this.fb.group({
       id: ['', Validators.required],
-      id: ['', Validators.required, CustomValidators.idValidator],
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       description: ['', Validators.required],
