@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Room} from '../models/room.model';
-import { Observable } from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,15 @@ export class RoomDataService {
     return this.http.get<Room[]>(`${this.apiUrl}`).toPromise();
   }
 
-  getRoomById(id: string): Observable<Room> {
-    return this.http.get<Room>(`${this.apiUrl}?id=${id}`);
+  getRoomById(id: string): Observable<Room[]> {
+    return this.http.get<Room[]>(`${this.apiUrl}?id=${id}`);
+  }
+
+  roomExists(id: string): Observable<boolean> {
+    return this.getRoomById(id).pipe(
+      map(rooms => rooms.length > 0),
+      catchError(() => of(false))
+    )
   }
 
   updateRoom(id: number, room: Room): Observable<Room> {

@@ -63,13 +63,4 @@ export class AvailabilityService {
     reservation.checkOutDate = new Date(reservation.checkOutDate + 'T00:00:00');
     return reservation;
   }
-
-  async roomExists(roomId: string): Promise<boolean> {
-    try {
-      const response = await this.roomDataService.getRoomById(roomId);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
 }

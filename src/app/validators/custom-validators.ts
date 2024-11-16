@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {AvailabilityService} from '../services/availability.service';
 import {PexelsService} from '../services/pexels.service';
 import {UserDataService} from '../services/user-data.service';
 import {catchError, map, Observable, of} from 'rxjs';
+import {RoomDataService} from "../services/room-data.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CustomValidators {
-    static availabilityService: AvailabilityService;
     static userDataService: UserDataService;
 
     constructor() {
@@ -49,38 +48,16 @@ export class CustomValidators {
         return new Date(date + 'T00:00:00');
     }
 
-    /*static async idValidatorRoom(control: AbstractControl): Promise<ValidationErrors | null> {
-      return await CustomValidators.availabilityService.roomExists(control.value) ? null : { invalidId: true };
-    }*/
-
-    static idValidatorRoom(): AsyncValidatorFn {
-        return (control: AbstractControl): Promise<{ [key: number]: any } | null> => {
-            if (control.value == '') {
-                return null as any;
-            } else {
-                return this.availabilityService.roomExists(control.value)
-                    .then(response => {
-                        return response ? {'roomExists': {value: control.value}} : null;
-                    });
-            }
-        };
-    }
-
-
-    /*static imageUrlValidator(control: AbstractControl): ValidationErrors | null {
-      const urlPattern = /^https:\/\/images\.pexels\.com\/photos\/\d+\/$/;
-      return urlPattern.test(control.value) ? null : { invalidUrl: true };
-    }*/
-
-    static imageUrlValidator(): ValidatorFn {
-        return (control: AbstractControl): ValidationErrors | null => {
-            console.log("control.value");
+    static roomExists(roomDataService: RoomDataService): AsyncValidatorFn {
+        return (control: AbstractControl): Observable<ValidationErrors | null> => {
             if (!control.value) {
-                console.log("dio false")
-                return null;
+                return of(null);
+            } else {
+                return roomDataService.roomExists(control.value).pipe(
+                    map(result => result ? {roomExists: {value: control.value}} : null),
+                    catchError(() => of(null))
+                )
             }
-            const urlPattern = /^https:\/\/images\.pexels\.com\/photos\/\d{6}.*/
-            return urlPattern.test(control.value) ? null : {invalidUrl: true};
         };
     }
 
@@ -95,6 +72,17 @@ export class CustomValidators {
             )
         };
     }
+
+    static imageUrlValidator(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            if (!control.value) {
+                return null;
+            }
+            const urlPattern = /^https:\/\/images\.pexels\.com\/photos\/\d{6}.*/
+            return urlPattern.test(control.value) ? null : {invalidUrl: true};
+        };
+    }
+
 
     static emailExists(): AsyncValidatorFn {
         return (control: AbstractControl): Observable<ValidationErrors | null> => {
