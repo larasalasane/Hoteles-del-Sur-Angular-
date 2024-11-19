@@ -27,4 +27,8 @@ export class RoomDataService {
   deleteRoom(roomId: string): Promise<void> {
     return this.http.delete<void>(`${this.apiUrl}/${roomId}`).toPromise();
   }
+
+  updateRoom(room: Room): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${room.id}`, room);
+  }
 }

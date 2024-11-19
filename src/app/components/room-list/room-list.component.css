@@ -15,10 +15,16 @@
     font-weight: bold;
     text-align: left;
   }
+
+  .rooms-list {
+    display: grid; /* Usamos grid para organizar las habitaciones */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+    gap: 20px; /* Espacio entre los elementos de la cuadrícula */
+  }
   
   .btn-add {
     background-color: #27b52c; 
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -30,11 +36,6 @@
     opacity: 0.8;
   }
   
-  .rooms-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
   
   .room-card {
     border: 1px solid #ccc;
@@ -45,6 +46,7 @@
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    box-sizing: border-box;
   }
   
   .room-card p {
@@ -58,10 +60,12 @@
   .button-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    margin-bottom: 20px;
+    align-items: flex-start;
     position: absolute;
     right: 20px;
     top: 20px;
+    gap: 2px;
   }
   
   button.btn-cancel {
@@ -70,8 +74,31 @@
     padding: 5px 10px;
     font-size: 0.875rem;
     margin-bottom: 10px;
+    width: 100px;
+    padding: 10px;
   }
   
   button.btn-cancel:hover {
     opacity: 0.8;
   }
+
+  button.btn-edit {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+    width: 100px;
+    padding: 10px;
+  }
+
+  button.btn-edit:hover {
+    opacity: 0.8;
+  }
+
+  .room-icon {
+    font-size: 2rem; /* Tamaño del ícono */
+    color: #4e421e; /* Color del ícono */
+    margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+  }
+

@@ -14,6 +14,7 @@ import { ViewServiceComponent } from './components/view-service/view-service.com
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'rooms/list', component: RoomListComponent},
   {path: 'rooms/list/add', component: AddRoomsComponent},
+  {path: 'rooms/edit/:id', component: EditRoomComponent },
   {path: 'rooms/:id', component: ViewRoomComponent},
 ];
 

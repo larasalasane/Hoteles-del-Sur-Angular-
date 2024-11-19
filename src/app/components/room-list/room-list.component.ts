@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RoomDataService} from '../../services/room-data.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-room-list',
@@ -14,7 +15,8 @@ export class RoomListComponent implements OnInit {
 
   constructor(
     private roomService: RoomDataService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public router: Router) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -43,6 +45,10 @@ export class RoomListComponent implements OnInit {
 
   async getRooms(): Promise<void> {
     const rooms = this.roomService.getRooms().subscribe(rooms => rooms ? this.rooms = rooms : []);
+  }
+
+  goToEditRooms(roomId: string): void {
+    this.router.navigate([`/rooms/edit/${roomId}`]);
   }
 
 }

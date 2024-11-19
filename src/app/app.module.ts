@@ -37,6 +37,8 @@ import { CommonModule } from '@angular/common';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -64,6 +66,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     ServiceListComponent,
     ViewRoomComponent,
     RoomListComponent,
+    EditRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,8 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     MatSelectModule,
     MatDialogModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent]

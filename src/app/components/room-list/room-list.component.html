@@ -5,12 +5,16 @@
     </div>
     <div *ngIf="rooms.length > 0" class="rooms-list">
         <div *ngFor="let room of rooms" class="room-card">
+          <div class="hotel-icon">
+            <mat-icon>hotel</mat-icon> 
+          </div>
             <p><strong>ID:</strong> {{ room.id }}</p>
             <p><strong>Tipo:</strong> {{ room.type }}</p>
             <p><strong>Capacidad:</strong> {{ room.details.capacity}} </p>
             <p><strong>Precio por Noche:</strong> {{ room.details.pricePerNight }}</p>
             <div class="button-group">
                 <button mat-raised-button class="btn-cancel" (click)="openConfirmDialog(room.id)">Eliminar</button>
+                <button mat-raised-button class="btn-edit" (click)="goToEditRooms(room.id)">Editar</button>
             </div>
         </div>
     </div>
