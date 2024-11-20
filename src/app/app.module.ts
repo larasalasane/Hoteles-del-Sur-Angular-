@@ -30,6 +30,15 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { ServiceComponent } from './components/services/service/service.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ServiceFormComponent } from './components/service-form/service-form.component';
+import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
+import { ViewServiceComponent } from './components/view-service/view-service.component';
+import { CommonModule } from '@angular/common';
+import { ServiceListComponent } from './components/service-list/service-list.component';
+import { ViewRoomComponent } from './components/view-room/view-room.component';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
+import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
 
 
 @NgModule({
@@ -49,7 +58,16 @@ import { ContactComponent } from './components/contact/contact.component';
     ServiceComponent,
     ServicesComponent,
     ProfileComponent,
-    ContactComponent
+    ContactComponent,
+    ServiceFormComponent,
+    ContactComponent,
+    AddRoomsComponent,
+    ViewServiceComponent,
+    ServiceListComponent,
+    ViewRoomComponent,
+    RoomListComponent,
+    ReservationListComponent,
+    ReservationEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,9 +82,10 @@ import { ContactComponent } from './components/contact/contact.component';
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
-  providers: [ReservationService], // Add AuthService here
+  providers: [ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

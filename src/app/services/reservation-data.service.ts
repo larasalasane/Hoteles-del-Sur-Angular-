@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Reservation} from '../models/reservation.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Reservation } from '../models/reservation.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +23,16 @@ export class ReservationDataService {
     return this.http.get<Reservation>(`${this.serverPath}/${reservationId}`).toPromise();
   }
 
-  getReservations(): Promise<Reservation[] | undefined> {
-    return this.http.get<Reservation[]>(`${this.serverPath}`).toPromise();
+  getReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.serverPath}`);
   }
 
   getUserReservations(reservationId: string): Promise<Reservation[] | undefined> {
     return this.http.get<Reservation[]>(`${this.serverPath}?userId=${reservationId}`).toPromise();
   }
 
-  updateReservation(reservationId: string, reservationData: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.serverPath}/${reservationId}`, reservationData);
+  updateReservation(reservationData: Reservation): Observable<Reservation> {
+    return this.http.put<Reservation>(`${this.serverPath}/${reservationData.id}`, reservationData);
   }
 
   deleteReservation(reservationId: string): Promise<void> {

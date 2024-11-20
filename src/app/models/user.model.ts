@@ -5,6 +5,7 @@ export class User {
   email: string | undefined;
   phoneNumber: string | undefined;
   password: string | undefined;
+  role : Role = Role.USER_ROLE;
 
   constructor(firstName: string, lastName: string, email: string, phoneNumber: string, password: string) {
     this.firstName = firstName;
@@ -12,6 +13,10 @@ export class User {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
+  }
 }
 
+export enum Role {
+  USER_ROLE,
+  ADMIN_ROLE
 }

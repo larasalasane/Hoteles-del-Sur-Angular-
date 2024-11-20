@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {UserDataService} from './user-data.service';
 import {Router} from '@angular/router';
-import {User} from '../models/user.model';
+import {Role, User} from '../models/user.model';
+import {catchError, map, Observable, of} from 'rxjs';
 
 
 @Injectable({
@@ -12,10 +13,10 @@ export class UserService {
   constructor(private userDataService: UserDataService, private router: Router) {
   }
 
-  performLogin(email: string, password: string) {
-    this.userDataService.getUserByEmail(email).subscribe(
+  performLogin(loginForm : {email:string , password : string}) {
+    this.userDataService.getUserByEmail(loginForm.email).subscribe(
       user => {
-        if (user && user[0].password === password) {
+        if (user && user[0].password === loginForm.password) {
           user[0].password = '';
           this.router.navigateByUrl('home').then(() => {
             sessionStorage.setItem('user', JSON.stringify(user[0]));
@@ -30,22 +31,17 @@ export class UserService {
     );
   }
 
-  register(userData: User): void {
-    let email : string = '';
-    if(userData.email){
-      email = userData.email;
-    }else{
-      console.error('Error interno');
-    }
-    this.userDataService.getUserByEmail(email).subscribe(
-      users => {
-        if(users.length != 0 ){
-          throw console.error('Email ya existente');
-        }else{
-          this.userDataService.createUser(userData).subscribe();
+  register(userForm : any): void {
+    this.emailAlreadyExists(userForm.email).subscribe(
+      result => {
+        if (result) {
+          console.log('User already exists');
+        } else {
+          userForm.role = Role.USER_ROLE;
+          this.userDataService.createUser(userForm).subscribe();
         }
       }
-    )
+    );
   }
 
   userIsLoggedIn(): boolean {
@@ -57,13 +53,20 @@ export class UserService {
     this.router.navigateByUrl('home');
   }
 
-  getUserId(): string | undefined{
-    let currentUser : User = JSON.parse(<string>sessionStorage.getItem('user'));
+  getUserId(): string | undefined {
+    let currentUser: User = JSON.parse(<string>sessionStorage.getItem('user'));
     return currentUser.id;
   }
 
   getUserData(): User | null {
     const user = sessionStorage.getItem('user');
-    return user ? JSON.parse(user) : null; 
+    return user ? JSON.parse(user) : null;
+  }
+
+  emailAlreadyExists(email: string) : Observable<boolean> {
+    return this.userDataService.getUserByEmail(email).pipe(
+      map(users => users.length > 0),
+      catchError(() => of(false))
+    )
   }
 }
