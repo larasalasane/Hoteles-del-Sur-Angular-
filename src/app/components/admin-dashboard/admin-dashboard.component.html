@@ -1,22 +1,25 @@
 <div class="dashboard-container">
-    <h2>Dashboard</h2>
-  
-    <div class="occupancy">
-      <h3>Ocupación del Hotel para el dia de hoy</h3>
-      <p>{{ occupancyPercentage }}%</p>
-    </div>
-  
-    <div class="reservations">
-      <h3>Reservaciones proximas dentro de la Semana</h3>
-      <ul>
-        <div *ngFor="let reservation of getReservationsForWeek()">
-         <br> <strong>Check-In:</strong> {{ reservation.checkInDate  }}<br>
-          <strong>Check-Out:</strong> {{ reservation.checkOutDate  }}<br>
-          <strong>Número de Huéspedes:</strong> {{ reservation.guests }}<br>
-          <strong>Numero de Habitación:</strong> {{ reservation.roomId }}<br>
-          <strong>User ID:</strong> {{ reservation.userId }}<br>
-        </div>
-    
-      </ul>
+  <h2>Informes</h2>
+
+  <div class="occupancy">
+    <h2>Ocupación del Hotel para el {{ today | date:'d MMMM' }}</h2>
+    <p>{{ occupancyPercentage }}%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="occupancyPercentage"></div>
     </div>
   </div>
+
+  <div class="reservations">
+    <h2>Reservaciones del {{ today1 | date:'d MMMM' }} al {{ oneWeekFromNow | date:'d MMMM' }}</h2>
+    <div *ngIf="getReservationsForWeek().length === 0">No hay reservaciones para esta semana.</div>
+    <ul>
+      <li *ngFor="let reservation of getReservationsForWeek()">
+        <strong>Check-In:</strong> {{ reservation.checkInDate | date }}<br>
+        <strong>Check-Out:</strong> {{ reservation.checkOutDate | date }}<br>
+        <strong>Número de Huéspedes:</strong> {{ reservation.guests }}<br>
+        <strong>Numero de Habitación:</strong> {{ reservation.roomId }}<br>
+        <strong>Usuario:</strong> {{ reservation.userName }} {{ reservation.userLastName }}<br><br>
+      </li>
+    </ul>
+  </div>
+</div>
