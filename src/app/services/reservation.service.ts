@@ -3,8 +3,8 @@ import {Reservation} from '../models/reservation.model';
 import {ReservationDataService} from './reservation-data.service';
 import {UserService} from './user.service';
 import {map, Observable} from 'rxjs';
-import {User} from '../models/user.model';
 import {Room} from '../models/room.model';
+import {User} from '../models/user.model';
 import {EmailService} from './email.service';
 
 @Injectable({
@@ -12,13 +12,12 @@ import {EmailService} from './email.service';
 })
 export class ReservationService {
 
-  private apiUrl = 'http://localhost:3000';
-
   constructor(
     private reservationDataService: ReservationDataService,
     private userService: UserService,
-    private emailService: EmailService,
-  ) {}
+    private emailService: EmailService
+  ) {
+  }
 
   async createReservation(reservation: Reservation, room: Room): Promise<string | undefined> {
     let user: User | null = this.userService.getUserData();
@@ -26,7 +25,7 @@ export class ReservationService {
       reservation.userId = user.id;
       let createdReservation: Reservation | undefined = await this.reservationDataService.createReservation(reservation);
       if (createdReservation) {
-        this.emailService.sendNotificationMail(user,createdReservation,room);
+        this.emailService.sendNotificationMail(user, createdReservation, room);
         return createdReservation.id;
       } else {
         throw new Error("Error creating reservation");
@@ -46,7 +45,7 @@ export class ReservationService {
     if (userId) {
       const foundReservations = await this.reservationDataService.getUserReservations(userId);
       if (foundReservations) {
-        foundReservations.forEach(reservation => this.setLocalDate(reservation))
+        foundReservations.forEach(reservation => this.setLocalDate(reservation));
         reservations = foundReservations;
       }
     }
@@ -68,6 +67,14 @@ export class ReservationService {
 
   async deleteReservation(id: string): Promise<void> {
     await this.reservationDataService.deleteReservation(id);
+  }
+
+  getReservations(): Observable<Reservation[]> {
+    return this.reservationDataService.getReservations().pipe(
+      map(reservations =>
+        reservations ? reservations.map(reservation => this.setLocalDate(reservation)) : []
+      )
+    );
   }
 
   setLocalDate(reservation: Reservation): Reservation {

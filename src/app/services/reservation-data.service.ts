@@ -1,39 +1,37 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Reservation} from '../models/reservation.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Reservation } from '../models/reservation.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationDataService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/reservations';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   createReservation(reservationData: Reservation): Promise<Reservation | undefined> {
-    return this.http.post<Reservation | undefined>(`${this.apiUrl}/reservations`, reservationData).toPromise();
+    return this.http.post<Reservation | undefined>(`${this.apiUrl}`, reservationData).toPromise();
   }
 
-
-  getReservationById(reservationId: string) {
-    return this.http.get<Reservation>(`${this.apiUrl}/reservations/${reservationId}`).toPromise();
+  getReservationById(reservationId: string): Promise<Reservation | undefined> {
+    return this.http.get<Reservation>(`${this.apiUrl}/${reservationId}`).toPromise();
   }
 
   getReservations(): Observable<Reservation[] | undefined> {
-    return this.http.get<Reservation[]>(`${this.apiUrl}/reservations`);
+    return this.http.get<Reservation[]>(`${this.apiUrl}`);
   }
 
-  getUserReservations(reservationId: string): Promise<Reservation[] | undefined> {
-    return this.http.get<Reservation[]>(`${this.apiUrl}/reservations?userId=${reservationId}`).toPromise();
+  getUserReservations(userId: string): Promise<Reservation[] | undefined> {
+    return this.http.get<Reservation[]>(`${this.apiUrl}?userId=${userId}`).toPromise();
   }
 
-  updateReservation(reservationId: string, reservationData: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.apiUrl}/reservations/${reservationId}`, reservationData);
+  updateReservation(reservation : Reservation ): Observable <void> {
+    return this.http.put<void>(`${this.apiUrl}/${reservation.id}`,reservation);
   }
 
   deleteReservation(reservationId: string): Promise<void> {
-    return this.http.delete<void>(`${this.apiUrl}/reservations/${reservationId}`).toPromise();
+    return this.http.delete<void>(`${this.apiUrl}/${reservationId}`).toPromise();
   }
 }

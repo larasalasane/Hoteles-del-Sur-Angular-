@@ -37,6 +37,8 @@ import { CommonModule } from '@angular/common';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
+import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     ServiceListComponent,
     ViewRoomComponent,
     RoomListComponent,
+    ReservationListComponent,
+    ReservationEditComponent,
   ],
   imports: [
     BrowserModule,

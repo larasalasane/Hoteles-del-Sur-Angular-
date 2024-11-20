@@ -1,4 +1,5 @@
 export class Reservation {
+
   id: string | undefined;
   checkInDate: Date;
   checkOutDate: Date;
