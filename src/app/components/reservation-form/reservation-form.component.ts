@@ -20,6 +20,7 @@ export class ReservationFormComponent implements OnInit {
   reservation: Reservation | undefined;
   minDate: string | undefined;
   maxDate: string | undefined;
+  availabilityChecked: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,10 +40,15 @@ export class ReservationFormComponent implements OnInit {
     const today = new Date();
     const maxDate = new Date();
 
-    maxDate.setDate(today.getDate() + 60); // Set maxDate to 60 days from today
+    maxDate.setDate(today.getDate() + 60);
 
     this.minDate = this.formatDate(today);
     this.maxDate = this.formatDate(maxDate);
+    this.reservationForm.valueChanges.subscribe(() => {
+      console.log(this.selectedRoom);
+      this.deselectRoom()
+      if (this.availabilityChecked) this.onCheckAvailability();
+    });
   }
 
   private formatDate(date: Date): string {
@@ -54,12 +60,13 @@ export class ReservationFormComponent implements OnInit {
 
   onCheckAvailability() {
     if (this.reservationForm.valid) {
+      this.availabilityChecked = true;
       this.availabilityService.getAvailableRooms(this.reservationForm.value).subscribe(
         rooms => this.rooms = rooms,
         error => console.log(error)
-      )
+      );
     } else {
-      console.log("Form invalido")
+      console.log("Form inválido");
     }
   }
 
@@ -73,12 +80,23 @@ export class ReservationFormComponent implements OnInit {
         await this.router.navigateByUrl(`/reservations/${id}`);
       }
     } else {
+      console.log(!this.selectedRoom)
+      console.log(this.reservationForm.invalid)
       console.log('Form is invalid');
     }
   }
 
   selectRoom(room: Room): void {
-    this.reservationForm.patchValue({ roomId: room.id });
+    this.patchRoomId(room.id)
     this.selectedRoom = room;
+  }
+
+  deselectRoom(){
+    this.patchRoomId('')
+    this.selectedRoom = undefined;
+  }
+
+  patchRoomId(value: string): void {
+    this.reservationForm.patchValue({ roomId: value},{emitEvent: false});
   }
 }

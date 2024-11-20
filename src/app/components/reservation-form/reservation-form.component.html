@@ -77,7 +77,7 @@
       </div>
 
       <div class="confirm-btn-wrapper">
-        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="!reservationForm.valid">
+        <button type="submit" class="btn btn-primary confirm-btn" [disabled]="reservationForm.invalid || !selectedRoom">
           Confirmar Reserva
         </button>
       </div>
