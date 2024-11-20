@@ -14,6 +14,7 @@ import { ViewServiceComponent } from './components/view-service/view-service.com
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'rooms/list', component: RoomListComponent},
   {path: 'rooms/list/add', component: AddRoomsComponent},
   {path: 'rooms/:id', component: ViewRoomComponent},
+  {path: 'dashboard', component: AdminDashboardComponent},
 ];
 
 @NgModule({

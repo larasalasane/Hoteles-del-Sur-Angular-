@@ -37,6 +37,7 @@ import { CommonModule } from '@angular/common';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     ServiceListComponent,
     ViewRoomComponent,
     RoomListComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
     MatSelectModule,
     MatDialogModule,
     FormsModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent]
