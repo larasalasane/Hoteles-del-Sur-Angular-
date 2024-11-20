@@ -2,7 +2,7 @@
   <h2 class="dashboard-tittle">Informes</h2>
 
   <div class="occupancy">
-    <h2 class="dashboard-subtitle">Ocupación del Hotel para el {{ today | date:'d MMMM' }}</h2>
+    <h2 class="dashboard-subtitle">Ocupación del Hotel para el {{ today | date:'d / M' }}</h2>
     <p class="percentage">{{ occupancyPercentage }}%</p>
     <div class="progress-bar-container">
       <div class="progress-bar" [style.width.%]="occupancyPercentage"></div>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="reservations">
-    <h2 class="reservations-tittle">Reservaciones del {{ today1 | date:'d MMMM' }} al {{ oneWeekFromNow | date:'d MMMM' }}</h2>
+    <h2 class="reservations-tittle">Reservaciones del {{ today1 | date:'d / M' }} al {{ oneWeekFromNow | date:'d / M' }}</h2>
     <div *ngIf="getReservationsForWeek().length === 0">No hay reservaciones para esta semana.</div>
     <ul class="reservation-list">
       <li *ngFor="let reservation of getReservationsForWeek()" class="reservation-item">
