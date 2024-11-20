@@ -21,6 +21,7 @@ export class AdminDashboardComponent implements OnInit {
   today: Date = new Date;
   oneWeekFromNow: Date = new Date;
   occupancyPercentage: number = 0;
+  PERCENTAGE_BASE = 100 ;
 
   constructor(
     private reservationService: ReservationService,
@@ -31,7 +32,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.today.setHours(0, 0, 0, 0);
     this.today1.setHours(0, 0, 0, 0);
-    this.today1.setDate(this.today1.getDate()+1);
+    this.today1.setDate(this.today1.getDate() + 1);
     this.loadDashboardData();
     this.oneWeekFromNow.setDate(this.today1.getDate() + 7);
   }
@@ -53,7 +54,7 @@ export class AdminDashboardComponent implements OnInit {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const totalRooms = this.rooms.length;
     this.reservationService.calculateOccupation(today, today).subscribe(occupiedRooms => {
-      console.log('Occupied Rooms:', occupiedRooms); this.occupancyPercentage = (occupiedRooms / totalRooms) * 100;
+      this.occupancyPercentage = (occupiedRooms / totalRooms) * this.PERCENTAGE_BASE;
     });
   }
 

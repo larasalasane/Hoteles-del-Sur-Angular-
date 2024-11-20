@@ -1,16 +1,41 @@
-
-
-.occupancy {
+.dashboard-container {
+    margin: 20px auto;
+    width: 80%;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  .dashboard-tittle {
+    font-size: 30px;
+    font-weight: bold;
     margin-bottom: 20px;
-    margin-left: 20px;
+    text-align: left;
+  }
+  
+  .dashboard-subtitle, .reservations-tittle {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .percentage {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .occupancy {
+    margin-bottom: 20px;
   }
   
   .progress-bar-container {
-    width: 50%;
+    width: 100%;
     background-color: #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
     height: 30px;
+    margin-top: 10px;
   }
   
   .progress-bar {
@@ -18,5 +43,29 @@
     background-color: #1458a5;
     width: 0;
     transition: width 0.3s ease;
+  }
+  
+  .reservations {
+    margin-top: 20px;
+  }
+  
+  .reservation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .reservation-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reservation-info {
+    line-height: 1.6;
   }
   
