@@ -1,13 +1,24 @@
 .rooms-section {
-    margin: 20px auto;
-    width: 80%;
+    justify-content: center; /* Distribuye espacio entre la lista y el filtro */
+    margin-top: 20px; /* Ajuste para evitar que se pegue al borde superior */
+    gap: 20px;
   }
   
   .title-and-button {
     display: flex;
+    margin-bottom: 20px;
+    width: 100%; 
     justify-content: space-between; 
     align-items: center;
-    margin-bottom: 20px;
+    padding: 3%;
+  }
+
+  .title-and-button h2 {
+    align-self: flex-start;
+  } 
+
+  .title-and-button button {
+    align-self: flex-end;
   }
   
   .rooms-title {
@@ -20,6 +31,8 @@
     display: grid; /* Usamos grid para organizar las habitaciones */
     grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
     gap: 20px; /* Espacio entre los elementos de la cuadrícula */
+    width: 70%;
+    margin: 0 auto;
   }
   
   .btn-add {
@@ -102,3 +115,61 @@
     margin-bottom: 10px; /* Espacio entre el ícono y el texto */
   }
 
+  .filter-section {
+    width: 25%; /* Ajusta el tamaño del filtro */
+  display: flex;
+  border-right: 1px solid #ccc;  /* Borde para separar el filtro de la lista */
+  align-items: center;
+  margin-bottom: 15px;
+  padding-right: 20px;  /* Espaciado interno a la derecha del filtro */
+  flex-direction: column;
+  padding-top: 20px;
+  border-radius: 10px; /* Redondeo de los bordes */
+  background-color: #f9f9f9; /* Fondo para que se vea el redondeo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+  }
+  
+  .filter-label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .filter-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .filter-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .filter-option {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s;
+  }
+
+  .filter-option:hover {
+    background-color: #ddd;
+  }
+  
+  .filter-option.selected {
+    background-color: #a2bee8;
+    color: #fff;
+  }
+
+  .filter-and-list{
+    display: flex;
+
+  }
+  
+  
