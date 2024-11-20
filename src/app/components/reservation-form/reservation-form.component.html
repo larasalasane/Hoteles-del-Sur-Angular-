@@ -11,10 +11,10 @@
         <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched"
           class="error">
           <div *ngIf="reservationForm.get('checkInDate')?.hasError('required')">
-            El campo es requerido
+            Ingrese una fecha
           </div>
           <div *ngIf="reservationForm.get('checkInDate')?.hasError('checkInInvalid')">
-            La fecha del check-in es invalida
+            La fecha es invalida
           </div>
         </div>
       </div>
@@ -28,10 +28,10 @@
         <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched"
           class="error">
           <div *ngIf="reservationForm.get('checkOutDate')?.hasError('required')">
-            El campo es requerido
+            Ingrese una fecha
           </div>
           <div *ngIf="reservationForm.get('checkOutDate')?.hasError('checkOutInvalid')">
-            La fecha del check-out es invalida
+            La fecha es invalida
           </div>
         </div>
       </div>
@@ -40,7 +40,15 @@
         <label for="guests">Número de huéspedes</label>
         <input type="number" id="guests" formControlName="guests" required min="1" class="form-control" />
         <div *ngIf="reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched" class="error">
-          Debe ingresar al menos 1 huésped.
+          <div *ngIf="reservationForm.get('guests')?.hasError('required')">
+            El campo es requerido
+          </div>
+          <div *ngIf="reservationForm.get('guests')?.hasError('min')">
+            Debe haber al menos un huesped
+          </div>
+          <div *ngIf="reservationForm.get('guests')?.hasError('max')">
+            El maximo de huespedes es 4
+          </div>
         </div>
       </div>
       <button type="button" (click)="onCheckAvailability()" class="btn btn-primary confirm-btn"
