@@ -47,10 +47,7 @@ export class CustomValidators {
   }
 
   static dateIsBeforeToday(date: Date) {
-    console.log(date);
-    console.log(this.getToday());
-    console.log(date<this.getToday());
-    return date < this.getToday()
+    return this.formatDate(date) < this.getToday()
   }
 
   static checkoutIsBeforeCheckIn(checkIn: Date, checkOut: Date): boolean {

@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {RoomDataService} from './room-data.service';
-import {catchError, map, Observable, of} from 'rxjs';
-import {Room} from '../models/room.model';
+import { Injectable } from '@angular/core';
+import { RoomDataService } from './room-data.service';
+import { catchError, map, Observable, of } from 'rxjs';
+import { Room } from '../models/room.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,9 @@ export class RoomService {
 
   createRoom(room: any): Observable<Room | undefined> {
     return this.roomDataService.createRoom(room)
+  }
+
+  getListRooms(): Observable<Room[]> {
+    return this.roomDataService.getRooms();
   }
 }

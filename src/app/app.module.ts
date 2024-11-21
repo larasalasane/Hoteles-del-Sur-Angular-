@@ -39,6 +39,10 @@ import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -68,6 +72,9 @@ import { ReservationEditComponent } from './components/reservation-edit/reservat
     RoomListComponent,
     ReservationListComponent,
     ReservationEditComponent,
+    ErrorDialogComponent,
+    AdminDashboardComponent,
+    EditRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +90,9 @@ import { ReservationEditComponent } from './components/reservation-edit/reservat
     MatSelectModule,
     MatDialogModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    CommonModule,
+    MatIconModule
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Location } from '@angular/common';  
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -10,18 +10,17 @@ import { Location } from '@angular/common';
 export class ProfileComponent implements OnInit {
   userData: any;
 
-  constructor(private userService: UserService, private location: Location) {}  
+  constructor(private userService: UserService, private location: Location) {}
 
   ngOnInit(): void {
     if (!this.userService.userIsLoggedIn()) {
       console.log("Usuario no logueado.");
     } else {
       this.userData = this.userService.getUserData();
-      console.log("Datos del usuario en el componente de perfil:", this.userData);
     }
   }
 
   goBack(): void {
-    this.location.back(); 
+    this.location.back();
   }
 }

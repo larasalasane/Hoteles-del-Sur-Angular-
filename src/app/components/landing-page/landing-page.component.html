@@ -1,23 +1,29 @@
-<div *ngIf="showReservationForm; then reservationForm else hotelHistory"></div>
-<ng-template #reservationForm><app-reservation-form></app-reservation-form></ng-template>
-<ng-template #hotelHistory>
-  <section class="history">
-    <h2>{{ companyInfo.history?.title }}</h2>
-    <p class="description" *ngFor="let description of companyInfo.history?.description">{{ description }}</p>
-  </section>
-  <section class="photos">
-    <h2>Galería de Fotos</h2>
-    <div class="photo-carousel">
-      <div *ngFor="let photo of photoMedia" class="photo-slide">
-        <img [src]="photo.src.original" alt="Hotel Photo">
+<div *ngIf="user?.role == Role.ADMIN_ROLE then adminContent else userContent"></div>
+<ng-template #adminContent>
+  <app-admin-dashboard></app-admin-dashboard>
+</ng-template>
+<ng-template #userContent>
+  <div *ngIf="showReservationForm; then reservationForm else hotelHistory"></div>
+  <ng-template #reservationForm><app-reservation-form></app-reservation-form></ng-template>
+  <ng-template #hotelHistory>
+    <section class="history">
+      <h2>{{ companyInfo.history?.title }}</h2>
+      <p class="description" *ngFor="let description of companyInfo.history?.description">{{ description }}</p>
+    </section>
+    <section class="photos">
+      <h2>Galería de Fotos</h2>
+      <div class="photo-carousel">
+        <div *ngFor="let photo of photoMedia" class="photo-slide">
+          <img [src]="photo.src.original" alt="Hotel Photo">
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="testimonials">
-    <h2>{{ companyInfo.testimonials?.title }}</h2>
-    <div class="testimonial" *ngFor="let comment of companyInfo.testimonials?.comments">
-      <p>"{{ comment.text }}"</p>
-      <p class="author">- {{ comment.author }}</p>
-    </div>
-  </section>
+    </section>
+    <section class="testimonials">
+      <h2>{{ companyInfo.testimonials?.title }}</h2>
+      <div class="testimonial" *ngFor="let comment of companyInfo.testimonials?.comments">
+        <p>"{{ comment.text }}"</p>
+        <p class="author">- {{ comment.author }}</p>
+      </div>
+    </section>
+  </ng-template>
 </ng-template>

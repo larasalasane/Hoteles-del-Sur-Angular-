@@ -21,7 +21,10 @@ export class HeaderComponent {
 
   async goHome(){
     await this.router.navigate(['/']);
-    this.eventBusService.emitToggleForm();
+  }
+
+  currentUrlIsHome(): boolean {
+    return this.router.url == '/home';
   }
 
   userIsLoggedIn() {

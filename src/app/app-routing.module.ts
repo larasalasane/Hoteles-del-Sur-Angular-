@@ -16,6 +16,8 @@ import {ViewRoomComponent} from './components/view-room/view-room.component';
 import {RoomListComponent} from './components/room-list/room-list.component';
 import {ReservationListComponent} from './components/reservation-list/reservation-list.component';
 import {ReservationEditComponent} from './components/reservation-edit/reservation-edit.component';
+import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
+import {EditRoomComponent} from './components/edit-room/edit-room.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,7 +33,9 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'rooms/list', component: RoomListComponent},
   {path: 'rooms/list/add', component: AddRoomsComponent},
+  {path: 'rooms/edit/:id', component: EditRoomComponent},
   {path: 'rooms/:id', component: ViewRoomComponent},
+  {path: 'dashboard', component: AdminDashboardComponent},
   {path: 'reservations/list', component: ReservationListComponent},
   {path: 'reservations/:id', component: ReservationComponent},
   {path: 'reservations/edit/:id', component: ReservationEditComponent}

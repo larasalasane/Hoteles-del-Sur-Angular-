@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {EventBusService} from '../../services/event-bus.service';
 import {PexelsService} from '../../services/pexels.service';
-import { CompanyService } from '../../services/company.service';
+import {CompanyService} from '../../services/company.service';
+import {UserService} from '../../services/user.service';
+import {Role, User} from '../../models/user.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,20 +14,25 @@ export class LandingPageComponent implements OnInit {
   photoMedia: any[] = [];
   photoCount: number = 0;
   companyInfo: any = {};
+  user: User | null = null;
 
-  constructor(private pexelService: PexelsService, private eventBus: EventBusService, private companyService: CompanyService) {
-  }
+  constructor(
+    private pexelService: PexelsService,
+    private eventBus: EventBusService,
+    private companyService: CompanyService,
+    private userService: UserService) {}
 
   showReservationForm: boolean = false;
 
   ngOnInit() {
     this.companyService.getCompanyInfo().subscribe((data) => {
-      this.companyInfo = data[0]; 
-    });    
+      this.companyInfo = data[0];
+    });
     this.getServiceMedia();
     this.eventBus.toggleForm$.subscribe(() => {
       this.showReservationForm = !this.showReservationForm;
     });
+    this.user = this.userService.getUserData()
   }
 
 
@@ -40,4 +47,6 @@ export class LandingPageComponent implements OnInit {
       console.error('Error fetching media:', error);
     }
   }
+
+  protected readonly Role = Role;
 }

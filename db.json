@@ -15,7 +15,7 @@
       "lastName": "Gómez",
       "email": "maria@example.com",
       "phone": "987-654-3210",
-      "password": "",
+      "password": "asdasd",
       "role": 0
     },
     {
@@ -53,6 +53,15 @@
       "phoneNumber": "2235254165",
       "password": "123456",
       "role": 0
+    },
+    {
+      "id": "7bd6",
+      "firstName": "gfgfdg",
+      "lastName": "sdfs",
+      "email": "tamy@hotmail.com",
+      "phoneNumber": "2233038681",
+      "password": "123456",
+      "role": 0
     }
   ],
   "rooms": [
@@ -61,7 +70,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 60000,
         "available": false,
         "imageUrl": "https://images.pexels.com/photos/260553/pexels-photo-260553.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -71,7 +80,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 75000,
         "available": false,
         "imageUrl": "https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -81,7 +90,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 40000,
         "available": false,
         "imageUrl": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -91,7 +100,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 60000,
         "available": false,
         "imageUrl": "https://images.pexels.com/photos/2029722/pexels-photo-2029722.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -101,7 +110,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 80000,
         "available": false,
         "imageUrl": "https://images.pexels.com/photos/189293/pexels-photo-189293.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -111,7 +120,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 25000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -121,7 +130,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 65000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/3688261/pexels-photo-3688261.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -131,7 +140,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 85000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/210604/pexels-photo-210604.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -141,7 +150,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 30000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -151,7 +160,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 60000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/14021932/pexels-photo-14021932.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -161,7 +170,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 80000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -171,7 +180,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 35000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -181,7 +190,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 70000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/14025022/pexels-photo-14025022.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -191,7 +200,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 90000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/2736388/pexels-photo-2736388.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -201,7 +210,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 25000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/3201763/pexels-photo-3201763.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -211,7 +220,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 70000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/20666872/pexels-photo-20666872.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -221,7 +230,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 95000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/7031731/pexels-photo-7031731.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -231,7 +240,7 @@
       "type": "Single",
       "details": {
         "capacity": 1,
-        "pricePerNight": 80,
+        "pricePerNight": 30000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/8092391/pexels-photo-8092391.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -241,7 +250,7 @@
       "type": "Double",
       "details": {
         "capacity": 2,
-        "pricePerNight": 120,
+        "pricePerNight": 55000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/29000006/pexels-photo-29000006.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -251,7 +260,7 @@
       "type": "Suite",
       "details": {
         "capacity": 4,
-        "pricePerNight": 250,
+        "pricePerNight": 85000,
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/14917460/pexels-photo-14917460.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
@@ -260,11 +269,35 @@
   "reservations": [
     {
       "id": "1937",
-      "checkInDate": "2024-11-11T03:00:00.000Z",
-      "checkOutDate": "2024-11-17T03:00:00.000Z",
+      "checkInDate": "2024-11-11",
+      "checkOutDate": "2024-11-17",
       "guests": 1,
       "roomId": "120",
       "userId": "6cc7"
+    },
+    {
+      "id": "8e45",
+      "checkInDate": "2024-11-20",
+      "checkOutDate": "2024-11-27",
+      "guests": 2,
+      "roomId": "120",
+      "userId": "7bd6"
+    },
+    {
+      "id": "adb0",
+      "checkInDate": "2024-11-21",
+      "checkOutDate": "2024-11-22",
+      "guests": 4,
+      "roomId": "117",
+      "userId": "2"
+    },
+    {
+      "id": "e60a",
+      "checkInDate": "2024-11-21",
+      "checkOutDate": "2024-11-22",
+      "guests": 4,
+      "roomId": "114",
+      "userId": "2"
     }
   ],
   "services": [
@@ -311,15 +344,15 @@
             "author": "Juan Pérez"
           }
         ]
-      }
+      },
+      "id": "b0ba"
     }
   ],
-    "companyContact": {
-      "title": "Contáctanos",
-      "phone": "+54 9 223 123 4567",
-      "email": "info@hotelesdelsur.com",
-      "hours": "Lunes a Viernes, 8:00 AM - 6:00 PM",
-      "address": "Libertad 131, 8400 Puerto Madryn, Chubut, Argentina"
-    }
-  
+  "companyContact": {
+    "title": "Contáctanos",
+    "phone": "+54 9 223 123 4567",
+    "email": "info@hotelesdelsur.com",
+    "hours": "Lunes a Viernes, 8:00 AM - 6:00 PM",
+    "address": "Libertad 131, 8400 Puerto Madryn, Chubut, Argentina"
+  }
 }

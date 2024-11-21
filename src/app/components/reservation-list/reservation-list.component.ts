@@ -3,6 +3,8 @@ import {ReservationService} from '../../services/reservation.service';
 import {Router} from '@angular/router';
 import {Reservation} from '../../models/reservation.model';
 import {CustomValidators} from '../../validators/custom-validators';
+import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reservation-list',
@@ -15,7 +17,8 @@ export class ReservationListComponent implements OnInit {
 
   constructor(
     private reservationService: ReservationService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
   }
 
@@ -23,8 +26,8 @@ export class ReservationListComponent implements OnInit {
     await this.router.navigate([`/reservations/edit/${reservationId}`]);
   }
 
-  ngOnInit(): void {
-    this.loadReservations();
+  async ngOnInit(): Promise<void> {
+    await this.loadReservations();
   }
 
   async loadReservations(): Promise<void> {
@@ -33,7 +36,7 @@ export class ReservationListComponent implements OnInit {
     )
   }
 
-  async onCancel(reservation: any): Promise<void> {
+  async cancelReservation(reservation: any): Promise<void> {
     try {
       await this.reservationService.deleteReservation(reservation.id);
       this.reservations = this.reservations.filter(r => r.id !== reservation.id);
@@ -45,5 +48,19 @@ export class ReservationListComponent implements OnInit {
 
   dateIsInvalid(reservation: Reservation): boolean {
     return !CustomValidators.dateIsBeforeToday(reservation.checkInDate);
+  }
+
+  async openConfirmDialog(reservation: Reservation): Promise<void> {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      height: '200px',
+      data: { reservation }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.cancelReservation(reservation);
+      }
+    });
   }
 }

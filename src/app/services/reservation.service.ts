@@ -3,8 +3,8 @@ import { Reservation } from '../models/reservation.model';
 import {ReservationDataService} from './reservation-data.service';
 import {UserService} from './user.service';
 import {map, Observable} from 'rxjs';
-import {Room} from '../models/room.model';
 import {User} from '../models/user.model';
+import {Room} from '../models/room.model';
 import {EmailService} from './email.service';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class ReservationService {
   constructor(
     private reservationDataService: ReservationDataService,
     private userService: UserService,
-    private emailService: EmailService
+    private emailService: EmailService,
   ) {
   }
 
@@ -71,10 +71,8 @@ export class ReservationService {
 
   getReservations(): Observable<Reservation[]> {
     return this.reservationDataService.getReservations().pipe(
-      map(reservations =>
-        reservations ? reservations.map(reservation => this.setLocalDate(reservation)) : []
-      )
-    );
+      map(reservations => reservations ? reservations : [])
+    )
   }
 
   setLocalDate(reservation: Reservation): Reservation {
@@ -82,4 +80,14 @@ export class ReservationService {
     reservation.checkOutDate = new Date(reservation.checkOutDate);
     return reservation;
   }
+
+  calculateOccupation(checkIn: Date, checkOut: Date): Observable<number> {
+    return this.getReservations().pipe(map(reservations => {
+      const matchingReservations = reservations ? reservations.filter(reservation => checkIn <= new Date(reservation.checkOutDate))
+        .filter(reservation => new Date(reservation.checkInDate) <= checkOut) : [];
+      const occupiedRooms = new Set(matchingReservations.map(reservation => reservation.roomId));
+      return occupiedRooms.size;
+    }));
+  }
+
 }
