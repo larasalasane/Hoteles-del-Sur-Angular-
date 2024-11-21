@@ -23,10 +23,10 @@ export class ServiceFormComponent implements OnInit {
     pexelsService: PexelsService
   ) {
     this.serviceForm = this.fb.group({
-      id: ['imbkzhu', Validators.required, CustomValidators.collectionExist(pexelsService)],
-      title: ['asd', Validators.required],
-      subtitle: ['asdasd', Validators.required],
-      description: ['asdasdasd', Validators.required],
+      id: ['', Validators.required, CustomValidators.collectionExist(pexelsService)],
+      title: ['', Validators.required],
+      subtitle: ['', Validators.required],
+      description: ['', Validators.required],
       imageUrl: ['', [Validators.required, CustomValidators.imageUrlValidator()]],
     });
   }

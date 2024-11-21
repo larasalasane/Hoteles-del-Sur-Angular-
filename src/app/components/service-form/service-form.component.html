@@ -6,7 +6,7 @@
           <label for="id">ID Servicio</label>
           <input type="text" id="id" formControlName="id" class="form-control" />
           <div *ngIf="serviceForm.get('id')?.invalid && serviceForm.get('id')?.touched" class="error">
-            El id es obligatorio.
+            El valor de ID no es valido.
           </div>
         </div>
 
@@ -38,7 +38,7 @@
           <label for="imageUrl">URL de la imagen</label>
           <input type="url" id="imageUrl" formControlName="imageUrl" class="form-control" />
           <div *ngIf="serviceForm.get('imageUrl')?.invalid && serviceForm.get('imageUrl')?.touched" class="error">
-            La imagen es obligatoria.
+            La url de imagen no es valida.
           </div>
         </div>
 

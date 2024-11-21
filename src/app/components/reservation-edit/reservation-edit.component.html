@@ -11,7 +11,7 @@
       <label for="checkInDate">Fecha de Check-In</label>
       <input type="date" id="checkInDate" formControlName="checkInDate" required class="form-control" />
       <div *ngIf="editForm.get('checkInDate')?.invalid && editForm.get('checkInDate')?.touched" class="error">
-        La fecha de check-in es obligatoria.
+        Le fecha de check-in es invalida
       </div>
     </div>
 
@@ -19,7 +19,7 @@
       <label for="checkOutDate">Fecha de Check-Out</label>
       <input type="date" id="checkOutDate" formControlName="checkOutDate" required class="form-control" />
       <div *ngIf="editForm.get('checkOutDate')?.invalid && editForm.get('checkOutDate')?.touched" class="error">
-        La fecha de check-out es obligatoria.
+        La fecha de check-out es invalida.
       </div>
     </div>
 
