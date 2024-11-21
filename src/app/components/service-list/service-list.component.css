@@ -5,7 +5,7 @@
 
 .title-and-button {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -17,8 +17,7 @@
 }
 
 .btn-add {
-  background-color: #27b52c; 
-  color: white;
+  background-color: rgba(143, 199, 59, 0.74);
   padding: 10px 20px;
   font-size: 16px;
   border: none;

@@ -47,17 +47,17 @@ export class RoomListComponent implements OnInit {
     this.filterText = filter;
 
     switch (filter) {
-      case 'below100':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight <= 100);
+      case 'bracketA':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight <= 50000);
         break;
-      case '100to200':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 100 && room.details.pricePerNight <= 200);
+      case 'bracketB':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 50000 && room.details.pricePerNight <= 75000);
         break;
-      case 'above200':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 200);
+      case 'bracketC':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 75000);
         break;
       default:
-        this.filteredRooms = [...this.rooms]; 
+        this.filteredRooms = [...this.rooms];
     }
   }
 
@@ -65,15 +65,15 @@ export class RoomListComponent implements OnInit {
 
   applyFilter(): void {
     console.log('Texto de filtro:', this.filterText);
-    console.log('Habitaciones filtradas:', this.filteredRooms); 
-  
+    console.log('Habitaciones filtradas:', this.filteredRooms);
+
     const lowerCaseFilter = this.filterText.trim().toLowerCase();
     this.filteredRooms = this.rooms.filter(room =>
       room.details.pricePerNight.toString().includes(lowerCaseFilter)
     );
   }
     */
-  
+
   async cancelRoom(roomId: string): Promise<void> {
     await this.roomService.deleteRoom(roomId);
     await this.getRooms()

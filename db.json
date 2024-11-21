@@ -15,7 +15,7 @@
       "lastName": "Gómez",
       "email": "maria@example.com",
       "phone": "987-654-3210",
-      "password": "",
+      "password": "asdasd",
       "role": 0
     },
     {
@@ -269,8 +269,8 @@
   "reservations": [
     {
       "id": "1937",
-      "checkInDate": "2024-11-11T03:00:00.000Z",
-      "checkOutDate": "2024-11-17T03:00:00.000Z",
+      "checkInDate": "2024-11-11",
+      "checkOutDate": "2024-11-17",
       "guests": 1,
       "roomId": "120",
       "userId": "6cc7"
@@ -282,6 +282,22 @@
       "guests": 2,
       "roomId": "120",
       "userId": "7bd6"
+    },
+    {
+      "id": "adb0",
+      "checkInDate": "2024-11-21",
+      "checkOutDate": "2024-11-22",
+      "guests": 4,
+      "roomId": "117",
+      "userId": "2"
+    },
+    {
+      "id": "e60a",
+      "checkInDate": "2024-11-21",
+      "checkOutDate": "2024-11-22",
+      "guests": 4,
+      "roomId": "114",
+      "userId": "2"
     }
   ],
   "services": [

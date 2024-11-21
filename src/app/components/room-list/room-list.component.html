@@ -7,14 +7,14 @@
   <div class="filter-and-list">
     <div class="filter-section">
       <h3>Filtrar por Precio</h3>
-      <div class="filter-option" [class.selected]="filterText === 'below100'" (click)="applyPriceFilter('below100')">
-        Hasta $100,00
+      <div class="filter-option" [class.selected]="filterText === 'bracketA'" (click)="applyPriceFilter('bracketA')">
+        Hasta $50,000
       </div>
-      <div class="filter-option" [class.selected]="filterText === '100to200'" (click)="applyPriceFilter('10kto200')">
-        $100,000 a $200,000
+      <div class="filter-option" [class.selected]="filterText === 'bracketB'" (click)="applyPriceFilter('bracketB')">
+        $50,000 a $75,000
       </div>
-      <div class="filter-option" [class.selected]="filterText === 'above200'" (click)="applyPriceFilter('above200')">
-        Más de $200,000
+      <div class="filter-option" [class.selected]="filterText === 'bracketC'" (click)="applyPriceFilter('bracketC')">
+        Más de $75,000
       </div>
     </div>
 
