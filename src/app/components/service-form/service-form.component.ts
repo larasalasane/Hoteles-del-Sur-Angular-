@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {ServicesService} from '../../services/services.service';
 import {CustomValidators} from '../../validators/custom-validators';
 import {PexelsService} from '../../services/pexels.service';
+import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class ServiceFormComponent implements OnInit {
     private fb: FormBuilder,
     private servicesService: ServicesService,
     private router: Router,
-    pexelsService: PexelsService
+    public pexelsService: PexelsService,
+    public dialog: MatDialog
   ) {
     this.serviceForm = this.fb.group({
       id: ['', Validators.required, CustomValidators.collectionExist(pexelsService)],
@@ -45,12 +48,20 @@ export class ServiceFormComponent implements OnInit {
           setTimeout(() => this.successMessage = false, 3000);
           await this.router.navigateByUrl(`/services/${addedService.id}`);
         }
-      } catch (error) {
-        console.error('Error al añadir el servicio:', error);
+      } catch (error: any) {
+        this.openErrorDialog(error.message);
       }
     } else {
-      console.log('El formulario es inválido');
+      this.openErrorDialog('Formulario Invalido');
     }
+  }
+
+  openErrorDialog(errorMessage: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      width: '400px',
+      height: '200px',
+      data: errorMessage
+    });
   }
 }
 
