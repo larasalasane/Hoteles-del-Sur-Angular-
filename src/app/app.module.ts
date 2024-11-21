@@ -41,6 +41,8 @@ import { ReservationListComponent } from './components/reservation-list/reservat
 import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -72,6 +74,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     ReservationEditComponent,
     ErrorDialogComponent,
     AdminDashboardComponent,
+    EditRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     MatDialogModule,
     FormsModule,
     CommonModule,
+    CommonModule,
+    MatIconModule
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent]
