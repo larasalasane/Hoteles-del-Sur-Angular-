@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {EventBusService} from '../../services/event-bus.service';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {Role} from '../../models/user.model';
 
 
 @Component({
@@ -23,5 +24,9 @@ export class HeroComponent {
 
   currentUrlIsHome(): boolean {
     return this.router.url == '/home';
+  }
+
+  userIsAdmin() {
+    return this.userService.getUserData()?.role == Role.ADMIN_ROLE
   }
 }

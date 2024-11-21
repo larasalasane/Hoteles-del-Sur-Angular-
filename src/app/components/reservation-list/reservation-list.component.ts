@@ -23,8 +23,8 @@ export class ReservationListComponent implements OnInit {
     await this.router.navigate([`/reservations/edit/${reservationId}`]);
   }
 
-  ngOnInit(): void {
-    this.loadReservations();
+  async ngOnInit(): Promise<void> {
+    await this.loadReservations();
   }
 
   async loadReservations(): Promise<void> {

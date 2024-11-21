@@ -71,10 +71,8 @@ export class ReservationService {
 
   getReservations(): Observable<Reservation[]> {
     return this.reservationDataService.getReservations().pipe(
-      map(reservations =>
-        reservations ? reservations.map(reservation => this.setLocalDate(reservation)) : []
-      )
-    );
+      map(reservations => reservations ? reservations : [])
+    )
   }
 
   setLocalDate(reservation: Reservation): Reservation {

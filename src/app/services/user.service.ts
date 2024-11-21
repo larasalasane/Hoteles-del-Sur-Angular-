@@ -19,7 +19,7 @@ export class UserService {
         users => {
           if(!users){
             throw new Error('Error desconocido al iniciar sesion');
-          } else if (users.length == 0 || users[0].email != loginForm.password){
+          } else if (users.length == 0 || users[0].password != loginForm.password){
             throw new Error('Credenciales Invalidas');
           }
           users[0].password = '';
