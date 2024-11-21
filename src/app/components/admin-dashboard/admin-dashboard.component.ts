@@ -19,9 +19,10 @@ export class AdminDashboardComponent implements OnInit {
   users: User[] = [];
   today1: Date = new Date;
   today: Date = new Date;
+  todayCheckIn: Date = new Date;
   oneWeekFromNow: Date = new Date;
   occupancyPercentage: number = 0;
-  PERCENTAGE_BASE = 100 ;
+  PERCENTAGE_BASE = 100;
 
   constructor(
     private reservationService: ReservationService,
@@ -32,9 +33,13 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.today.setHours(0, 0, 0, 0);
     this.today1.setHours(0, 0, 0, 0);
+    this.todayCheckIn.setHours(0, 0, 0, 0);
     this.today1.setDate(this.today1.getDate() + 1);
-    this.loadDashboardData();
+    this.todayCheckIn.setDate(this.todayCheckIn.getDate() - 1);
     this.oneWeekFromNow.setDate(this.today1.getDate() + 7);
+
+    this.loadDashboardData();
+
   }
 
   loadDashboardData(): void {
@@ -71,6 +76,16 @@ export class AdminDashboardComponent implements OnInit {
       return {
         ...reservation, userName: user?.firstName, userLastName: user?.lastName
       };
+    });
+  }
+
+  getCheckInsToday(): (Reservation & { userName?: string, userLastName?: string })[] {
+    return this.reservations.filter(reservation => {
+      const checkInDate = new Date(reservation.checkInDate);
+      return checkInDate.toDateString() === this.todayCheckIn.toDateString();
+    }).map(reservation => {
+      const user = this.users.find(user => user.id === reservation.userId);
+      return { ...reservation, userName: user?.firstName, userLastName: user?.lastName };
     });
   }
 }
