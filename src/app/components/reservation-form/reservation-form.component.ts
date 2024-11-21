@@ -79,8 +79,6 @@ export class ReservationFormComponent implements OnInit {
         await this.router.navigateByUrl(`/reservations/${id}`);
       }
     } else {
-      console.log(!this.selectedRoom)
-      console.log(this.reservationForm.invalid)
       console.log('Form is invalid');
     }
   }

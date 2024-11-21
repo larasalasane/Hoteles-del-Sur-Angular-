@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Reservation } from '../models/reservation.model';
-import { ReservationDataService } from './reservation-data.service';
-import { UserService } from './user.service';
-import { map, Observable } from 'rxjs';
-import { User } from '../models/user.model';
-import { Room } from '../models/room.model';
-import { EmailService } from './email.service';
+import {Injectable} from '@angular/core';
+import {Reservation} from '../models/reservation.model';
+import {ReservationDataService} from './reservation-data.service';
+import {UserService} from './user.service';
+import {map, Observable} from 'rxjs';
+import {User} from '../models/user.model';
+import {Room} from '../models/room.model';
+import {EmailService} from './email.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class ReservationService {
     private reservationDataService: ReservationDataService,
     private userService: UserService,
     private emailService: EmailService,
-  ) { }
+  ) {
+  }
 
   async createReservation(reservation: Reservation, room: Room): Promise<string | undefined> {
     let user: User | null = this.userService.getUserData();
@@ -55,10 +56,10 @@ export class ReservationService {
     return this.reservationDataService.getReservations().pipe(
       map(reservations =>
         reservations ? reservations
-          .filter(reservation => checkIn <= reservation.checkOutDate)
-          .filter(reservation => reservation.checkInDate <= checkOut)
-          .map(reservation => reservation.roomId)
-          .filter(roomId => roomId !== undefined)
+            .filter(reservation => checkIn <= reservation.checkOutDate)
+            .filter(reservation => reservation.checkInDate <= checkOut)
+            .map(reservation => reservation.roomId)
+            .filter(roomId => roomId !== undefined)
           : []
       )
     );
@@ -80,12 +81,8 @@ export class ReservationService {
     return reservation;
   }
 
-  getListReservations(): Observable<Reservation[]> {
-    return this.reservationDataService.getReservations();
-  }
-
   calculateOccupation(checkIn: Date, checkOut: Date): Observable<number> {
-    return this.getListReservations().pipe(map(reservations => {
+    return this.getReservations().pipe(map(reservations => {
       const matchingReservations = reservations ? reservations.filter(reservation => checkIn <= new Date(reservation.checkOutDate))
         .filter(reservation => new Date(reservation.checkInDate) <= checkOut) : [];
       const occupiedRooms = new Set(matchingReservations.map(reservation => reservation.roomId));

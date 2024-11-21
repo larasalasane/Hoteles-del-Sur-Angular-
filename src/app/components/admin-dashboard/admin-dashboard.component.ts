@@ -39,7 +39,7 @@ export class AdminDashboardComponent implements OnInit {
 
   loadDashboardData(): void {
     forkJoin({
-      reservations: this.reservationService.getListReservations(),
+      reservations: this.reservationService.getReservations(),
       rooms: this.roomService.getListRooms(),
       users: this.userService.getListUsers()
     }).subscribe(({ reservations, rooms, users }) => {
@@ -70,7 +70,6 @@ export class AdminDashboardComponent implements OnInit {
       const user = this.users.find(user => user.id === reservation.userId);
       return {
         ...reservation, userName: user?.firstName, userLastName: user?.lastName
-
       };
     });
   }
