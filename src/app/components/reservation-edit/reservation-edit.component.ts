@@ -5,6 +5,8 @@ import { ReservationService } from '../../services/reservation.service';
 import { Reservation } from '../../models/reservation.model';
 import { ReservationDataService } from '../../services/reservation-data.service';
 import { CustomValidators } from '../../validators/custom-validators';
+import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reservation-edit',
@@ -12,19 +14,18 @@ import { CustomValidators } from '../../validators/custom-validators';
   styleUrls: ['./reservation-edit.component.css']
 })
 export class ReservationEditComponent implements OnInit {
-  editForm: FormGroup; // Initialize the form group immediately
+  editForm: FormGroup;
   reservationId: string | null = null;
   reservation: Reservation | undefined;
-  errorMessage: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
     private reservationService: ReservationService,
-    private reservationDataService: ReservationDataService
+    private reservationDataService: ReservationDataService,
+    public dialog: MatDialog
   ) {
-    // Initialize the form to prevent undefined errors
     this.editForm = this.fb.group({
       id: new FormControl({ value: '', disabled: true }),
       checkInDate: ['', [Validators.required, CustomValidators.checkInValidator()]],
@@ -75,34 +76,21 @@ export class ReservationEditComponent implements OnInit {
   onSubmit(): void {
     if (this.editForm.valid && this.reservationId) {
       const updatedReservation = {
-        ...this.editForm.getRawValue(), // Include disabled fields
+        ...this.editForm.getRawValue(),
         id: this.reservationId
       };
-
       this.reservationDataService.updateReservation(updatedReservation).subscribe(
         () => this.router.navigate(['reservations/list']),
-        (error) => console.error('Error al actualizar la reserva: ', error)
+        (error) => this.openErrorDialog(error.message)
       );
     }
   }
 
-  onCancel(): void {
-    if (!this.reservationId || isNaN(Number(this.reservationId))) {
-      console.error('ID de reserva no válido:', this.reservationId);
-      alert('ID de reserva no válido');
-      return;
-    }
-
-    if (confirm('¿Estás seguro de que deseas cancelar esta reserva?')) {
-      this.reservationService.deleteReservation(this.reservationId)
-        .then(() => {
-          alert('Reserva cancelada correctamente.');
-          this.router.navigate(['/reservations']);
-        })
-        .catch(error => {
-          console.error('Error al cancelar la reserva:', error);
-          alert('Hubo un error al cancelar la reserva.');
-        });
-    }
+  openErrorDialog(errorMessage: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      width: '400px',
+      height: '200px',
+      data: errorMessage
+    });
   }
 }

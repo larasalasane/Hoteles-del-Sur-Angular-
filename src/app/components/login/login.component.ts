@@ -32,12 +32,12 @@ export class LoginComponent {
         if (result) this.router.navigate(['/']);
       },
       error => {
-        this.openConfirmDialog(error.message);
+        this.openErrorDialog(error.message);
       }
     );
   }
 
-  openConfirmDialog(errorMessage: string): void {
+  openErrorDialog(errorMessage: string): void {
     this.dialog.open(ErrorDialogComponent, {
       width: '400px',
       height: '200px',
