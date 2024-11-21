@@ -40,6 +40,7 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     ReservationListComponent,
     ReservationEditComponent,
     ErrorDialogComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     MatSelectModule,
     MatDialogModule,
     FormsModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent]

@@ -67,4 +67,9 @@ export class UserService {
       catchError(() => of(false))
     )
   }
+
+  getListUsers(): Observable<User[]> {
+    return this.userDataService.getUsers();
+  }
+
 }

@@ -16,7 +16,7 @@ export class RoomDataService {
     return this.http.post<Room>(`${this.apiUrl}`, room);
   }
 
-  getRooms(): Observable<Room[] | undefined> {
+  getRooms(): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.apiUrl}`);
   }
 
