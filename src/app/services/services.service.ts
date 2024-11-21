@@ -19,17 +19,12 @@ export class ServicesService {
     return this.http.get<Service[]>(`${this.serverPath}`).toPromise();
   }
 
-  async addService(newService: Service): Promise<Service | undefined> { 
+  async addService(newService: Service): Promise<Service | undefined> {
     return this.http.post<Service>(`${this.apiUrl}`, newService).toPromise();
   }
 
   getService(serviceId: string): Promise<Service | undefined> {
-    return this.http.get<Service | undefined>(`${this.apiUrl}/${serviceId}`).toPromise(); 
-  }
-  
-
-  getServiceById(serviceId: string): Promise<Service[]| undefined> {
-    return this.http.get<Service[]>(`${this.apiUrl}/${serviceId}`).toPromise();
+    return this.http.get<Service | undefined>(`${this.apiUrl}/${serviceId}`).toPromise();
   }
 
   deleteService(serviceId: string): Promise<void> {

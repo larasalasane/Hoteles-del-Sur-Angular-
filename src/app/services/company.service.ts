@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'https://hoteles-del-sur-json-server.onrender.com/api/';
   constructor(private http: HttpClient) {
 
   }
