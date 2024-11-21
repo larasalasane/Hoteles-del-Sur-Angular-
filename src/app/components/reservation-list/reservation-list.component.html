@@ -14,7 +14,7 @@
       </div>
       <div class="actions" *ngIf="dateIsInvalid(reservation)">
         <button class="btn btn-primary" (click)="onEdit(reservation.id)">Editar</button>
-        <button class="btn btn-danger" (click)="onCancel(reservation)">Cancelar</button>
+        <button class="btn btn-danger" (click)="openConfirmDialog(reservation)">Cancelar</button>
       </div>
     </div>
   </div>
