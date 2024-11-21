@@ -47,17 +47,17 @@ export class RoomListComponent implements OnInit {
     this.filterText = filter;
 
     switch (filter) {
-      case 'below10k':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight <= 10);
+      case 'below100':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight <= 100);
         break;
-      case '10kto80k':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 10 && room.details.pricePerNight <= 80);
+      case '100to200':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 100 && room.details.pricePerNight <= 200);
         break;
-      case 'above80k':
-        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 80);
+      case 'above200':
+        this.filteredRooms = this.rooms.filter(room => room.details.pricePerNight > 200);
         break;
       default:
-        this.filteredRooms = [...this.rooms]; // Si no hay filtro, muestra todas
+        this.filteredRooms = [...this.rooms]; 
     }
   }
 
