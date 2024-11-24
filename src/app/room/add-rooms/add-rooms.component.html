@@ -7,7 +7,7 @@
         <label for="id">Número</label>
         <input type="text" id="id" formControlName="id" class="form-control"/>
         <div *ngIf="roomForm.get('id')?.invalid && roomForm.get('id')?.touched" class="error">
-          El número de habitación es obligatorio.
+          El número de habitación es invalido o ya existe.
         </div>
       </div>
 
