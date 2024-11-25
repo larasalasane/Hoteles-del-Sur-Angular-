@@ -37,19 +37,19 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       try {
-        this.userService.register(this.registerForm.value); // Aquí se envía el registro al servicio
-         // Abre el pop-up al registrar exitosamente
+        this.userService.register(this.registerForm.value); 
+         
          this.dialog.open(SuccessfullyDialogComponent).afterClosed().subscribe(() => {
-          this.router.navigate(['login']); // Navega después de cerrar el pop-up
+          this.router.navigate(['login']); 
         });
-        this.showSuccessPopup = true; // Muestra el modal
+        this.showSuccessPopup = true; 
       } catch (error) {
         this.registerError = true;
       }
     }
   }
   closePopup() {
-    this.showSuccessPopup = false; // Cierra el modal
-    this.router.navigate(['login']); // Navega al login
+    this.showSuccessPopup = false; 
+    this.router.navigate(['login']); 
   }
 }

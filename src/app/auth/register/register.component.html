@@ -48,7 +48,6 @@
     <button type="submit" [disabled]="registerForm.invalid">Registro</button>
   </form>
 
-  <!-- Modal de Registro Exitoso -->
   <div *ngIf="showSuccessPopup" class="modal">
     <div class="modal-content">
       <h2>Registro Exitoso</h2>
@@ -57,7 +56,6 @@
     </div>
   </div>
 
-  <!-- Mensaje de Error -->
   <div *ngIf="registerError" class="error">
     Hubo un error en el Registro, ¡verifique los campos!
   </div>
