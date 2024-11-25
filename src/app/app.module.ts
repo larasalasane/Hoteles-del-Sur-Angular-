@@ -60,8 +60,7 @@ import {SharedModule} from './shared/shared.module';
     ContactModule,
     ProfileModule,
     LandingPageModule,
-    SharedModule,
-    MatButtonModule,
+    SharedModule
   ],
   providers: [ReservationService, provideHttpClient()],
   bootstrap: [AppComponent]

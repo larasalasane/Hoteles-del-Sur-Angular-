@@ -15,7 +15,11 @@
             <i class="fas fa-clock"></i> Horario de Atención: {{ contactInfo.hours }}
           </p>
           <p class="card-text">
-            <i class="fas fa-map-marker-alt"></i> Dirección: {{ contactInfo.address }}
+            <i class="fas fa-map-marker-alt"></i> Dirección: <a
+              href="https://www.google.com/maps/search/?api=1&query={{ contactInfo.address }}" target="_blank"
+              class="text-white">
+              {{ contactInfo.address }}
+            </a>
           </p>
         </div>
       </div>
