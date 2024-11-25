@@ -60,7 +60,7 @@ export class AdminDashboardComponent implements OnInit {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const totalRooms = this.rooms.length;
     this.reservationService.calculateOccupation(today, today).subscribe(occupiedRooms => {
-      this.occupancyPercentage = (occupiedRooms / totalRooms) * this.PERCENTAGE_BASE;
+      this.occupancyPercentage = Math.round((occupiedRooms / totalRooms) * this.PERCENTAGE_BASE);
     });
   }
 

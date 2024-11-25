@@ -62,6 +62,15 @@
       "phoneNumber": "2233038681",
       "password": "123456",
       "role": 0
+    },
+    {
+      "id": "1a1c",
+      "firstName": "Juaquina",
+      "lastName": "Tobler",
+      "email": "joaquina@example.com",
+      "phoneNumber": "1234567890",
+      "password": "123456",
+      "role": 0
     }
   ],
   "rooms": [
@@ -264,6 +273,16 @@
         "available": true,
         "imageUrl": "https://images.pexels.com/photos/14917460/pexels-photo-14917460.jpeg?auto=compress&cs=tinysrgb&h=350"
       }
+    },
+    {
+      "id": "210",
+      "type": "Single",
+      "details": {
+        "capacity": 2,
+        "pricePerNight": 30000,
+        "available": true,
+        "imageUrl": "https://images.pexels.com/photos/8092391/pexels-photo-8092391.jpeg?auto=compress&cs=tinysrgb&h=350"
+      }
     }
   ],
   "reservations": [
@@ -298,6 +317,22 @@
       "guests": 4,
       "roomId": "114",
       "userId": "2"
+    },
+    {
+      "id": "92e5",
+      "checkInDate": "2024-11-26",
+      "checkOutDate": "2024-11-27",
+      "guests": 2,
+      "roomId": "110",
+      "userId": "1a1c"
+    },
+    {
+      "id": "1756",
+      "checkInDate": "2024-11-25",
+      "checkOutDate": "2024-11-30",
+      "guests": 4,
+      "roomId": "114",
+      "userId": "1a1c"
     }
   ],
   "services": [
@@ -353,6 +388,6 @@
     "phone": "+54 9 223 123 4567",
     "email": "info@hotelesdelsur.com",
     "hours": "Lunes a Viernes, 8:00 AM - 6:00 PM",
-    "address": "Libertad 131, 8400 Puerto Madryn, Chubut, Argentina"
+    "address": "Bv. Almte Brown 637, Puerto Madryn, 9120, Argentina"
   }
 }

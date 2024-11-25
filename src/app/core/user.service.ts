@@ -49,7 +49,9 @@ export class UserService {
 
   performLogout() {
     sessionStorage.removeItem('user');
-    this.router.navigateByUrl('home');
+    this.router.navigate(['home']).then(() => {
+      window.location.reload(); 
+    });
   }
 
   getUserId(): string | undefined {
