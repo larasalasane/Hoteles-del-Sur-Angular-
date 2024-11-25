@@ -4,10 +4,10 @@ Este es un Sistema de Gestión de Hoteles desarrollado en Angular utilizando Jso
 
 ## 🌟 Características
 
-👥 Como usuario, poder visualizar la pantalla de inicio, crear una cuenta, iniciar sesion y realizar una reserva. Tambien poder observar los servicio ofrecidos.
-📧 Notificaciones Automáticas: Envío de correos electrónicos de confirmación de reservas.
-📊 Panel Administrativo: Estadísticas de ocupación diaria y semanal, gestión avanzada de reservas, habitaciones y servicios.
-🔐 Sistema de Login: Autenticación segura con control de acceso por roles (cliente y administrador).
+- 👥 Como usuario, poder visualizar la pantalla de inicio, crear una cuenta, iniciar sesion y realizar una reserva. Tambien poder observar los servicio ofrecidos.
+- 📧 Notificaciones Automáticas: Envío de correos electrónicos de confirmación de reservas.
+- 📊 Panel Administrativo: Estadísticas de ocupación diaria y semanal, gestión avanzada de reservas, habitaciones y servicios.
+- 🔐 Sistema de Login: Autenticación segura con control de acceso por roles (cliente y administrador).
 
 ## 💻 Instalación
 
