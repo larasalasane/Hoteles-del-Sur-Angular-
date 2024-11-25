@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../core/user.service';
 import {CustomValidators} from '../../core/validators/custom-validators';
 import { Router } from '@angular/router';
+import { SuccessfullyDialogComponent } from '../../shared/successfully-dialog/successfully-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -11,13 +13,14 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  registerSuccess = false;
+  showSuccessPopup = false;
   registerError = false;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -34,11 +37,19 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       try {
-        this.userService.register(this.registerForm.value);
-        this.router.navigate(['login']);
+        this.userService.register(this.registerForm.value); // Aquí se envía el registro al servicio
+         // Abre el pop-up al registrar exitosamente
+         this.dialog.open(SuccessfullyDialogComponent).afterClosed().subscribe(() => {
+          this.router.navigate(['login']); // Navega después de cerrar el pop-up
+        });
+        this.showSuccessPopup = true; // Muestra el modal
       } catch (error) {
         this.registerError = true;
       }
     }
+  }
+  closePopup() {
+    this.showSuccessPopup = false; // Cierra el modal
+    this.router.navigate(['login']); // Navega al login
   }
 }
