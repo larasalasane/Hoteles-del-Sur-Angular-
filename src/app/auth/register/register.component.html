@@ -2,7 +2,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div>
       <label>Nombre/s</label>
-      <input formControlName="firstName"/>
+      <input formControlName="firstName" />
       <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
         <small *ngIf="registerForm.get('firstName')?.errors?.['required']">Debe ingresar un nombre.</small>
         <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']">Mínimo dos caracteres.</small>
@@ -11,7 +11,7 @@
 
     <div>
       <label>Apellido</label>
-      <input formControlName="lastName"/>
+      <input formControlName="lastName" />
       <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
         <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Debe ingresar un apellido.</small>
         <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Mínimo dos caracteres.</small>
@@ -20,7 +20,7 @@
 
     <div>
       <label>Email</label>
-      <input formControlName="email" type="email"/>
+      <input formControlName="email" type="email" />
       <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
         <small *ngIf="registerForm.get('email')?.errors?.['required']">Debe ingresar un email.</small>
         <small *ngIf="registerForm.get('email')?.errors?.['email']">Formato de email no valido</small>
@@ -29,7 +29,7 @@
 
     <div>
       <label>Teléfono</label>
-      <input formControlName="phoneNumber"/>
+      <input formControlName="phoneNumber" />
       <div *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched">
         <small *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">Debe ingresar un teléfono</small>
         <small *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']">Formato: 10 dígitos.</small>
@@ -38,7 +38,7 @@
 
     <div>
       <label>Contraseña</label>
-      <input formControlName="password" type="password"/>
+      <input formControlName="password" type="password" />
       <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
         <small *ngIf="registerForm.get('password')?.errors?.['required']">Debe ingresar una contraseña.</small>
         <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Mínimo 6 caracteres.</small>
@@ -46,8 +46,19 @@
     </div>
 
     <button type="submit" [disabled]="registerForm.invalid">Registro</button>
-
-    <div *ngIf="registerSuccess" class="success">Registro Exitoso!</div>
-    <div *ngIf="registerError" class="error">Hubo un error en el Registro, verifique los campos!</div>
   </form>
+
+  <!-- Modal de Registro Exitoso -->
+  <div *ngIf="showSuccessPopup" class="modal">
+    <div class="modal-content">
+      <h2>Registro Exitoso</h2>
+      <p>El registro se ha completado correctamente.</p>
+      <button (click)="closePopup()">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- Mensaje de Error -->
+  <div *ngIf="registerError" class="error">
+    Hubo un error en el Registro, ¡verifique los campos!
+  </div>
 </div>
