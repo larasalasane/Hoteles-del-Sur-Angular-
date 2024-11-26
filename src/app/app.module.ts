@@ -1,86 +1,44 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {provideHttpClient} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
 
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { ServicesComponent } from './components/services/services.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
-import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import {AppComponent} from './app.component';
 
-import { ReservationService } from './services/reservation.service';
-import { ReservationComponent } from './components/reservation/reservation.component';
-import { ServiceComponent } from './components/services/service/service.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { ServiceFormComponent } from './components/service-form/service-form.component';
-import { AddRoomsComponent } from './components/add-rooms/add-rooms.component';
-import { ViewServiceComponent } from './components/view-service/view-service.component';
-import { CommonModule } from '@angular/common';
-import { ServiceListComponent } from './components/service-list/service-list.component';
-import { ViewRoomComponent } from './components/view-room/view-room.component';
-import { RoomListComponent } from './components/room-list/room-list.component';
-import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
-import { ReservationEditComponent } from './components/reservation-edit/reservation-edit.component';
-import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { EditRoomComponent } from './components/edit-room/edit-room.component';
-import { MatIconModule } from '@angular/material/icon';
+import {ReservationService} from './reservation/reservation.service';
+
+import {CommonModule} from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {ServiceModule} from './service/service.module';
+import {RoomModule} from './room/room.module';
+import {ReservationModule} from './reservation/reservation.module';
+import {DashboardModule} from './dashboard/dashboard.module';
+import {AuthModule} from './auth/auth.module';
+import {CoreModule} from './core/core.module';
+import {ContactModule} from './contact/contact.module';
+import {ProfileModule} from './profile/profile.module';
+import {LandingPageModule} from './landing-page/landing-page.module';
+import {SharedModule} from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HeroComponent,
-    ServicesComponent,
-    FooterComponent,
-    LandingPageComponent,
-    ReservationFormComponent,
-    MyReservationsComponent,
-    ConfirmationDialogComponent,
-    LoginComponent,
-    RegisterComponent,
-    ReservationComponent,
-    ServiceComponent,
-    ServicesComponent,
-    ProfileComponent,
-    ContactComponent,
-    ServiceFormComponent,
-    ContactComponent,
-    AddRoomsComponent,
-    ViewServiceComponent,
-    ServiceListComponent,
-    ViewRoomComponent,
-    RoomListComponent,
-    ReservationListComponent,
-    ReservationEditComponent,
-    ErrorDialogComponent,
-    AdminDashboardComponent,
-    EditRoomComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     AppRoutingModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -91,10 +49,21 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     FormsModule,
     CommonModule,
-    CommonModule,
-    MatIconModule
+    MatIconModule,
+    BrowserModule,
+    CoreModule,
+    AuthModule,
+    DashboardModule,
+    ReservationModule,
+    RoomModule,
+    ServiceModule,
+    ContactModule,
+    ProfileModule,
+    LandingPageModule,
+    SharedModule
   ],
-  providers: [ReservationService],
+  providers: [ReservationService, provideHttpClient()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
