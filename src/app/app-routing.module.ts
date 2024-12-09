@@ -18,6 +18,7 @@ import {AdminDashboardComponent} from './dashboard/admin-dashboard/admin-dashboa
 import {EditRoomComponent} from './room/edit-room/edit-room.component';
 import { ServiceListComponent } from './service/service-list/service-list.component';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
+import { SingleComponent } from './room/single/single.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'services/:id', component: ViewServiceComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'single', component: SingleComponent},
   {path: 'rooms/list', component: RoomListComponent},
   {path: 'rooms/list/add', component: AddRoomsComponent},
   {path: 'rooms/edit/:id', component: EditRoomComponent},
@@ -38,7 +40,8 @@ const routes: Routes = [
   {path: 'dashboard', component: AdminDashboardComponent},
   {path: 'reservations/list', component: ReservationListComponent},
   {path: 'reservations/:id', component: ReservationComponent},
-  {path: 'reservations/edit/:id', component: ReservationEditComponent}
+  {path: 'reservations/edit/:id', component: ReservationEditComponent},
+  
 ];
 
 @NgModule({

@@ -389,5 +389,23 @@
     "email": "info@hotelesdelsur.com",
     "hours": "Lunes a Viernes, 8:00 AM - 6:00 PM",
     "address": "Bv. Almte Brown 637, Puerto Madryn, 9120, Argentina"
-  }
+  },
+  "roomInfo": [
+    {
+      "single": {
+        "id":"dzm04fj",
+        "title": "Habitacion Single",
+        "description": [
+          "Nuestro hotel abrió sus puertas en 1990, con el objetivo de ofrecer una experiencia única a nuestros huéspedes. A lo largo de los años, hemos evolucionado y mejorado nuestras instalaciones, manteniendo siempre nuestro compromiso con la calidad y el servicio excepcional.",
+          "Con una ubicación privilegiada en el corazón de la ciudad, nuestro hotel se ha convertido en un símbolo de hospitalidad y elegancia. Desde su inauguración, hemos recibido a miles de huéspedes de todo el mundo, creando recuerdos inolvidables y experiencias únicas."
+        ]
+      },
+      "double": {
+        "title": "Habitacion Double",
+        "description": [
+          "Nuestro hotel abrió sus puertas en 1990, con"
+        ]
+      }
+    }
+  ]
 }

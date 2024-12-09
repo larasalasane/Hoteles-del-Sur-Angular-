@@ -1,4 +1,5 @@
 .nav-link {
+  color: aliceblue;
   cursor: pointer;
   text-decoration: none;
 }
@@ -44,3 +45,14 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #1f6697;}
+
+.dropdown-button2{
+  background-color: rgba(39, 38, 38, 0.2);
+  color: aliceblue;
+  border: none;
+}
+
+
+
+
+
