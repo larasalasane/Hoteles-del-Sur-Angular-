@@ -23,4 +23,16 @@ export class CompanyService {
       map(data => data[0].single)
     );
   }
+
+  getDoubleRoomInfo(): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}roomInfo`).pipe(
+      map(data => data[0].double)
+    );
+  }
+
+  getSuiteRoomInfo(): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}roomInfo`).pipe(
+      map(data => data[0].suite)
+    );
+  }
 }

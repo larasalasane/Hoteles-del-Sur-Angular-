@@ -19,6 +19,8 @@ import {EditRoomComponent} from './room/edit-room/edit-room.component';
 import { ServiceListComponent } from './service/service-list/service-list.component';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { SingleComponent } from './room/single/single.component';
+import { DoubleComponent } from './room/double/double.component';
+import { SuiteComponent } from './room/suite/suite.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -33,6 +35,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'single', component: SingleComponent},
+  {path: 'double', component: DoubleComponent},
+  {path: 'suite', component: SuiteComponent},
   {path: 'rooms/list', component: RoomListComponent},
   {path: 'rooms/list/add', component: AddRoomsComponent},
   {path: 'rooms/edit/:id', component: EditRoomComponent},
