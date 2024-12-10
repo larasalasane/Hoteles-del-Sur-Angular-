@@ -33,13 +33,15 @@
   
   .description-box p { 
     font-size: 15px; 
-    line-height: 1.6; 
+    line-height: 1.6;
   }
+
   h1{
     font-size: 30px;
     color: #333;
     margin-bottom: 10px;
   }
+
   .black-line { 
     height: 2px; 
     background-color: #000; 

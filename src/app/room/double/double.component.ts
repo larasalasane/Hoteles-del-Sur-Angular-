@@ -1,31 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../../core/company.service';
 import { Photo } from 'pexels';
+import { CompanyService } from '../../core/company.service';
 import { PexelsService } from '../../core/pexels.service';
 
 @Component({
-  selector: 'app-single',
-  templateUrl: './single.component.html',
-  styleUrls: ['./single.component.css']
+  selector: 'app-double',
+  templateUrl: './double.component.html',
+  styleUrl: './double.component.css'
 })
-export class SingleComponent implements OnInit {
-  singleRoomInfo: any;
+export class DoubleComponent implements OnInit{
+
+  doubleRoomInfo: any;
   photoMedia: Photo[] = [];
   photoCount: number = 0;
   currentPhotoSlide = 0;
 
-  constructor(private companyService: CompanyService, private pexeService: PexelsService) { }
-
-  ngOnInit(): void {
-    this.getSingleRoomInfo();
+  constructor(
+    private companyService: CompanyService, 
+    private pexeService: PexelsService ){
   }
 
-  getSingleRoomInfo(): void {
- 
-    this.companyService.getSingleRoomInfo().subscribe(
+  ngOnInit(): void {
+    this.getDoubleRoomInfo();
+  }
+
+  getDoubleRoomInfo(): void {
+    this.companyService.getDoubleRoomInfo().subscribe(
       data => {
-        this.singleRoomInfo = data;
-        if (this.singleRoomInfo) {
+        this.doubleRoomInfo = data;
+        if (this.doubleRoomInfo) {
           this.getServiceMedia();
         }
       },
@@ -37,8 +40,8 @@ export class SingleComponent implements OnInit {
 
   async getServiceMedia(): Promise<void> {
     try {
-      console.log(this.singleRoomInfo.id);
-      const collection = await this.pexeService.getCollectionMedia(this.singleRoomInfo.id);
+      console.log(this.doubleRoomInfo.id);
+      const collection = await this.pexeService.getCollectionMedia(this.doubleRoomInfo.id);
       if (collection) {
         this.photoMedia = collection.media.filter(media => media.type === 'Photo');
         this.photoCount = this.photoMedia.length;
@@ -63,4 +66,5 @@ export class SingleComponent implements OnInit {
       this.currentPhotoSlide++;
     }
   }
+
 }
