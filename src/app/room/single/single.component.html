@@ -1,19 +1,39 @@
-<div class="text-column">
-    <div class="media-card blank-card">
-      <h1>{{ singleRoomInfo?.title }}</h1>
-      <p *ngFor="let desc of singleRoomInfo?.description">{{ desc }}</p>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-6 text-column">
+      <div class="media-card blank-card p-3 shadow">
+        <h1 class="mb-3">{{ singleRoomInfo?.title }}</h1>
+        <hr class="description-separator">
+        <div class="description-box">
+          <p *ngFor="let desc of singleRoomInfo?.description" class="text-secondary">{{ desc }}</p>
+        </div>
+      
+        <!-- Sección de Comodidades -->
+        <div class="features-box mt-4">
+          <h3 class="features-title">Comodidades</h3>
+          <ul class="list-unstyled">
+            <li *ngFor="let feature of singleRoomInfo?.features" class="feature-item">
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="media-column">
-    <div *ngIf="photoMedia.length" class="photo media-wrapper">
-      <div class="actual media-card" *ngIf="photoMedia.length > 0">
-        <img [src]="photoMedia[currentPhotoSlide].src.medium" alt="Image">
-        <div class="carrousel-buttons">
-          <button class="prev-button" (click)="prevPhoto()">&#10094;</button>
-          <button class="next-button" (click)="nextPhoto()">&#10095;</button>
+
+    <div class="col-md-6 media-column">
+      <div *ngIf="photoMedia.length" class="photo media-wrapper">
+        <div class="actual media-card" *ngIf="photoMedia.length > 0">
+          <img 
+            [src]="photoMedia[currentPhotoSlide].src.medium" 
+            alt="Image" 
+            class="img-fluid rounded shadow mb-2"
+          >
+          <div class="carrousel-buttons d-flex justify-content-between">
+            <button class="btn btn-outline-primary btn-sm" (click)="prevPhoto()">&#10094;</button>
+            <button class="btn btn-outline-primary btn-sm" (click)="nextPhoto()">&#10095;</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
