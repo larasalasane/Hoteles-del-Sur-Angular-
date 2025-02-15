@@ -333,6 +333,22 @@
       "guests": 4,
       "roomId": "114",
       "userId": "1a1c"
+    },
+    {
+      "id": "7550",
+      "checkInDate": "2025-02-17",
+      "checkOutDate": "2025-02-27",
+      "guests": 1,
+      "roomId": "108",
+      "userId": "b188"
+    },
+    {
+      "id": "cc3f",
+      "checkInDate": "2025-02-14",
+      "checkOutDate": "2025-02-28",
+      "guests": 2,
+      "roomId": "111",
+      "userId": "b188"
     }
   ],
   "services": [
@@ -394,7 +410,7 @@
     {
       "single": {
         "id": "dzm04fj",
-        "title":"Habitacion Single",
+        "title": "Habitacion Single",
         "description": [
           "✨ Disfruta de una estadía cómoda y acogedora en nuestra habitación single, ideal para viajeros que buscan tranquilidad y confort. Perfecta para viajes de negocios o escapadas cortas."
         ],
@@ -444,7 +460,8 @@
           "📺 TV de pantalla plana de 50 pulgadas",
           "🖋️ Escritorio y silla de diseño ergonómico"
         ]
-      }
+      },
+      "id": "0b40"
     }
   ]
 }

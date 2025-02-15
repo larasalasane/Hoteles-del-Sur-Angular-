@@ -21,30 +21,32 @@ import { ReservationListComponent } from './reservation/reservation-list/reserva
 import { SingleComponent } from './room/single/single.component';
 import { DoubleComponent } from './room/double/double.component';
 import { SuiteComponent } from './room/suite/suite.component';
+import { AuthGuard } from './auth/guard/auth.guard';
+import { AdminGuard } from './auth/guard/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: LandingPageComponent},
-  {path: 'reservations', component: MyReservationsComponent},
+  {path: 'reservations', component: MyReservationsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'services', component: ServicesComponent},
-  {path: 'services/list', component: ServiceListComponent},
-  {path: 'services/list/add', component: ServiceFormComponent},
-  {path: 'services/:id', component: ViewServiceComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'services/list', component: ServiceListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'services/list/add', component: ServiceFormComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'services/:id', component: ViewServiceComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactComponent},
   {path: 'single', component: SingleComponent},
   {path: 'double', component: DoubleComponent},
   {path: 'suite', component: SuiteComponent},
-  {path: 'rooms/list', component: RoomListComponent},
-  {path: 'rooms/list/add', component: AddRoomsComponent},
-  {path: 'rooms/edit/:id', component: EditRoomComponent},
-  {path: 'rooms/:id', component: ViewRoomComponent},
-  {path: 'dashboard', component: AdminDashboardComponent},
-  {path: 'reservations/list', component: ReservationListComponent},
-  {path: 'reservations/:id', component: ReservationComponent},
-  {path: 'reservations/edit/:id', component: ReservationEditComponent},
+  {path: 'rooms/list', component: RoomListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'rooms/list/add', component: AddRoomsComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'rooms/edit/:id', component: EditRoomComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'rooms/:id', component: ViewRoomComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard, AdminGuard] },
+  {path: 'reservations/list', component: ReservationListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'reservations/:id', component: ReservationComponent, canActivate: [AuthGuard]},
+  {path: 'reservations/edit/:id', component: ReservationEditComponent, canActivate: [AuthGuard, AdminGuard]}, 
   
 ];
 
