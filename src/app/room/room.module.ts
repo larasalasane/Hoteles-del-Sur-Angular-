@@ -9,6 +9,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SingleComponent } from './single/single.component';
+import { DoubleComponent } from './double/double.component';
+import { SuiteComponent } from './suite/suite.component';
 
 
 
@@ -17,7 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddRoomsComponent,
     EditRoomComponent,
     RoomListComponent,
-    ViewRoomComponent
+    ViewRoomComponent,
+    SingleComponent,
+    DoubleComponent,
+    SuiteComponent
   ],
   imports: [
     CommonModule,

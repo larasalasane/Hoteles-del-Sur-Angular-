@@ -333,6 +333,22 @@
       "guests": 4,
       "roomId": "114",
       "userId": "1a1c"
+    },
+    {
+      "id": "7550",
+      "checkInDate": "2025-02-17",
+      "checkOutDate": "2025-02-27",
+      "guests": 1,
+      "roomId": "108",
+      "userId": "b188"
+    },
+    {
+      "id": "cc3f",
+      "checkInDate": "2025-02-14",
+      "checkOutDate": "2025-02-28",
+      "guests": 2,
+      "roomId": "111",
+      "userId": "b188"
     }
   ],
   "services": [
@@ -389,5 +405,63 @@
     "email": "info@hotelesdelsur.com",
     "hours": "Lunes a Viernes, 8:00 AM - 6:00 PM",
     "address": "Bv. Almte Brown 637, Puerto Madryn, 9120, Argentina"
-  }
+  },
+  "roomInfo": [
+    {
+      "single": {
+        "id": "dzm04fj",
+        "title": "Habitacion Single",
+        "description": [
+          "✨ Disfruta de una estadía cómoda y acogedora en nuestra habitación single, ideal para viajeros que buscan tranquilidad y confort. Perfecta para viajes de negocios o escapadas cortas."
+        ],
+        "features": [
+          "🛏️ Cama individual premium",
+          "📶 Wi-Fi de alta velocidad",
+          "📺 Televisor LED con canales internacionales",
+          "✍️ Escritorio para trabajar cómodamente",
+          "🌡️ Aire acondicionado y calefacción",
+          "🚿 Baño privado con ducha relajante",
+          "🧴 Artículos de tocador de cortesía",
+          "🧹 Servicio de limpieza diario"
+        ]
+      },
+      "double": {
+        "id": "cp8vqbg",
+        "title": "Habitacion Double",
+        "description": [
+          "🛏️ La habitación Double de nuestro hotel es perfecta para parejas o dos personas que buscan comodidad y espacio. Diseñada pensando en la tranquilidad y el descanso, ofrece un ambiente cálido y acogedor.",
+          "🛋️ Equipada con una cama doble o dos camas individuales, cuenta con ropa de cama de alta calidad, baño privado con amenities exclusivos 🧴, TV de pantalla plana 📺, conexión Wi-Fi gratuita 📶 y un escritorio para quienes necesiten trabajar durante su estadía.",
+          "✨ Con una decoración moderna y elegante, esta habitación es ideal para relajarse después de un día explorando la ciudad o disfrutando de las instalaciones del hotel."
+        ],
+        "features": [
+          "🛏️ Cama doble o dos camas individuales",
+          "🛁 Baño privado con amenities",
+          "📶 Wi-Fi de alta velocidad",
+          "📺 TV de pantalla plana",
+          "🖋️ Escritorio y silla ergonómica"
+        ]
+      },
+      "suite": {
+        "id": "87cxjfz",
+        "title": "Habitacion Suite",
+        "description": [
+          "🌟 La Habitación Suite ofrece la experiencia más exclusiva y lujosa de nuestro hotel, ideal para hasta 4 personas. Diseñada para quienes buscan comodidad, privacidad y un toque de elegancia.",
+          "🛋️ Cuenta con un amplio salón independiente, perfecto para relajarse o recibir visitas, dos camas queen-size 🛏️, y un baño de lujo con bañera de hidromasaje 🛁.",
+          "☕ Disfrute de una cafetera premium, minibar bien surtido 🍷 y acceso a servicios exclusivos para los huéspedes de la suite.",
+          "✨ Con vistas panorámicas inigualables y una decoración sofisticada, nuestra suite es perfecta para familias o grupos que desean una estadía inolvidable."
+        ],
+        "features": [
+          "🛏️ Dos camas queen-size (para 4 personas)",
+          "🛋️ Salón independiente",
+          "🛁 Baño con bañera de hidromasaje",
+          "☕ Cafetera premium y minibar",
+          "🌆 Vistas panorámicas",
+          "📶 Wi-Fi de alta velocidad",
+          "📺 TV de pantalla plana de 50 pulgadas",
+          "🖋️ Escritorio y silla de diseño ergonómico"
+        ]
+      },
+      "id": "0b40"
+    }
+  ]
 }

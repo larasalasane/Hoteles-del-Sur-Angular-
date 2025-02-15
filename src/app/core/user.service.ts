@@ -15,20 +15,20 @@ export class UserService {
   }
 
   performLogin(loginForm: { email: string, password: string }): Observable<boolean> {
-    return this.userDataService.getUserByEmail(loginForm.email).pipe(
-      map(
-        users => {
-          if(!users){
-            throw new Error('Error desconocido al iniciar sesion');
-          } else if (users.length == 0 || users[0].password != loginForm.password){
-            throw new Error('Credenciales Invalidas');
-          }
-          users[0].password = '';
-          sessionStorage.setItem('user', JSON.stringify(users[0]));
-          return true
-        })
-    )
-  }
+  return this.userDataService.getUserByEmail(loginForm.email).pipe(
+    map(users => {
+      if (!users) {
+        throw new Error('Error desconocido al iniciar sesión');
+      } else if (users.length === 0 || users[0].password !== loginForm.password) {
+        throw new Error('Credenciales inválidas');
+      }
+      users[0].password = '';
+      sessionStorage.setItem('user', JSON.stringify(users[0]));
+      return true;
+    })
+  );
+}
+
 
   register(userForm: any): void {
     this.emailAlreadyExists(userForm.email).subscribe(

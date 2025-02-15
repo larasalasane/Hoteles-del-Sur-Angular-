@@ -1,0 +1,49 @@
+.features-box {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .features-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .feature-item {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .feature-item .feature-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  .feature-item .feature-text {
+    font-size: 1.1rem;
+  }
+  
+  .description-separator {
+    border: 1px solid #ddd;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .description-box p { 
+    font-size: 15px; 
+    line-height: 1.6;
+  }
+
+  h1{
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .black-line { 
+    height: 2px; 
+    background-color: #000; 
+    margin: 25px 0; 
+  }
