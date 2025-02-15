@@ -11,7 +11,7 @@ Este es un Sistema de Gestión de Hoteles desarrollado en Angular utilizando Jso
 
 ## 💻 Instalación
 
-1. Clonar el repositorio: `https://github.com/Sieglind/Hoteles-del-Sur-Angular-.git `
+1. Clonar el repositorio: `https://github.com/larasalasane/Hoteles-del-Sur-Angular-.git`
 2. Instalar las dependencias: npm install
    
 ## 👥 Colaboradores
